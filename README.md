@@ -1,10 +1,53 @@
-# eonics-hacknight-webflux
+# Eonics Hack Night #21 Reactive programming met Spring Webflux
 
-Let&#39;s investigate WebFlux and the Reactive Programming paradigms.
+# Introduction
+
+Let's investigate WebFlux and the Reactive Programming paradigms.
+
+In our example we are going to look at a cat care center.
+
+>The center is responsible to find cats and kittens and register them. Wild cats in urban areas cannot fend for themselves and they deserve the best of a household. In this application we will allow a Cat Care Center (CCC) to manage these cats and keep a record of them. Considering that cats can live anything between [2 to 16 years](https://www.mcvoordieren.nl/hoe-oud-wordt-een-kat) in the wild, and all the way up to [38 years](https://en.wikipedia.org/wiki/Creme_Puff_\(cat\)) at home, it is important to keep their history. We also want to keep record of who owned them in the past and where have they lived as much as possible in order to assess their behaviour. At the same time we want to gather as much data as possible in orther to determine patterns in behaviour that may lead to certain health conditions.
+
+## Status
+
+[Under construction...](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/UnderConstruction.md)
+
+
+## Description
+
+At the end of this session we will look into WebFlux exercises to complete.
+
+## About this event (In Dutch)
+
+Op 19 februari 2020 organiseert Eonics de 21ste Open Hack Night. Dit keer zal Eonics consultant João Esperancinha ons een introductie geven in Reactive programming met Spring Webflux.
+
+Na de coding challenge van januari gaan we voor februari weer "back to the roots" met een ouderwetse hack night over een Java/Kotlin gerelateerd onderwerp, waarbij we natuurlijk ook zelf aan de slag gaan met de materie.
+
+Zoals altijd regelen we eten en drinken, inclusief vegetarische en halal opties, maar neem wel je eigen laptop mee zodat je mee kan doen aan de workshop.
+
+Alles op een rij
+
+-   Waar: Eonics HQ
+-   Wanneer: Woensdag 19 februari 2019
+-   Wat: Reactive programming met Spring Webflux
+-   Spreker: [João Esperancinha](jofisaes@gmail.com)
+-   Hoe laat: inloop vanaf 17:00 uiterlijk 17:45 aanwezig
+-   Eten & drinken is aanwezig, inclusief vegetarische & halal opties
+-   Aanmelden: RSVP via Eventbrite
+
+Voor vragen neem contact op met Chantal van der Kleij.
 
 ## Domain knowledge
 
--  [Meet Zuu – The Cat Who Embodies The Feeling When You Hear Your Alarm Clock Start Ringing](https://www.boredpanda.com/funny-exotic-long-hair-cat-zuu/)
+-   [Meet Zuu – The Cat Who Embodies The Feeling When You Hear Your Alarm Clock Start Ringing](https://www.boredpanda.com/funny-exotic-long-hair-cat-zuu/)
+
+## Where to sign in
+
+-   [Eonics Hack Night #21 Reactive programming in Spring Webflux](https://www.eventbrite.com/e/tickets-eonics-hack-night-21-reactive-programming-in-spring-webflux-91585581941)
+
+## References
+
+-   
 
 ## About me
 
