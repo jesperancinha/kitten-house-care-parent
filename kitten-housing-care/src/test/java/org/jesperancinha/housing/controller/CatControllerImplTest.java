@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -37,62 +36,54 @@ class CatControllerImplTest {
 
     @Test
     void getCatByIdI_whenCall_testBlocking() {
-        assertThrows(Exception.class, () ->
-                Mono.delay(Duration.ofMillis(1))
-                        .doOnNext(it -> {
-                            try {
-                                catController.getCatByIdI(1L);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        })
-                        .block()
-        );
+        Mono.delay(Duration.ofMillis(1))
+                .doOnNext(it -> {
+                    try {
+                        catController.getCatByIdI(1L);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .block();
     }
 
     @Test
     void getFullCatById_whenCall_testBlocking() {
-        assertThrows(Exception.class, () ->
-                Mono.delay(Duration.ofMillis(1))
-                        .doOnNext(it -> {
-                            try {
-                                catController.getFullCatById(1L);
-                            } catch (IOException | ExecutionException | InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                        })
-                        .block()
-        );
+        Mono.delay(Duration.ofMillis(1))
+                .doOnNext(it -> {
+                    try {
+                        catController.getFullCatById(1L);
+                    } catch (IOException | ExecutionException | InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .block();
     }
 
     @Test
     void getAllCats_whenCall_testBlocking() {
-        assertThrows(Exception.class, () ->
-                Mono.delay(Duration.ofMillis(1))
-                        .doOnNext(it -> {
-                            try {
-                                catController.getAllCats();
-                            } catch (ExecutionException | InterruptedException | IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        })
-                        .block()
-        );
+        Mono.delay(Duration.ofMillis(1))
+                .doOnNext(it -> {
+                    try {
+                        catController.getAllCats();
+                    } catch (ExecutionException | InterruptedException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .block();
     }
 
     @Test
     void getFullAllCats_whenCall_testBlocking() {
-        assertThrows(Exception.class, () ->
-                Mono.delay(Duration.ofMillis(1))
-                        .doOnNext(it -> {
-                            try {
-                                catController.getFullAllCats();
-                            } catch (ExecutionException | InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                        })
-                        .block()
-        );
+        Mono.delay(Duration.ofMillis(1))
+                .doOnNext(it -> {
+                    try {
+                        catController.getFullAllCats();
+                    } catch (ExecutionException | InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .block();
     }
 
     @Test
