@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/cats")
@@ -18,7 +19,11 @@ public class CatControllerImpl implements CatController {
         this.catService = catService;
     }
 
-    public CatDto getCatByIdI(@PathVariable Long catId) throws IOException, InterruptedException {
+    public CatDto getCatByIdI(@PathVariable Long catId) throws IOException {
         return this.catService.getCatById(catId);
+    }
+
+    public CatDto getFullCatById(@PathVariable Long catId) throws IOException, ExecutionException, InterruptedException {
+        return this.catService.getFullCatById(catId);
     }
 }

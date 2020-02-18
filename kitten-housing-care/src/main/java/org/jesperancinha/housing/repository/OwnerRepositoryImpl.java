@@ -1,18 +1,18 @@
 package org.jesperancinha.housing.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jesperancinha.housing.model.Cat;
+import org.jesperancinha.housing.model.Owner;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 
 @Repository
-public class CatRepositoryImpl implements CatRepository {
+public class OwnerRepositoryImpl implements OwnerRepository {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public Cat getCatById(Long id) throws IOException {
-        return objectMapper.readValue(getClass().getResourceAsStream("/cat.json"), Cat.class);
+    public Owner getOwnerById(Long id) throws IOException {
+        return objectMapper.readValue(getClass().getResourceAsStream("/owner.json"), Owner.class);
     }
 }

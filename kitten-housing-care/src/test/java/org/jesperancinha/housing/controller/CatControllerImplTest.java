@@ -1,7 +1,5 @@
 package org.jesperancinha.housing.controller;
 
-import org.jesperancinha.housing.repository.CatRepositoryImpl;
-import org.jesperancinha.housing.service.CatServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -21,12 +20,6 @@ class CatControllerImplTest {
 
     @Autowired
     private CatControllerImpl catController;
-
-    @Autowired
-    private CatServiceImpl catService;
-
-    @Autowired
-    private CatRepositoryImpl catRepository;
 
     static {
         BlockHound.install();
@@ -47,7 +40,22 @@ class CatControllerImplTest {
                         .doOnNext(it -> {
                             try {
                                 catController.getCatByIdI(1L);
-                            } catch (IOException | InterruptedException e) {
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        })
+                        .block()
+        );
+    }
+
+    @Test
+    void getFullCatById() {
+        assertThrows(Exception.class, () ->
+                Mono.delay(Duration.ofMillis(1))
+                        .doOnNext(it -> {
+                            try {
+                                catController.getFullCatById(1L);
+                            } catch (IOException | ExecutionException | InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
                         })
