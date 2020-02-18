@@ -45,6 +45,28 @@ Voor vragen neem contact op met Chantal van der Kleij.
 
 -   [Eonics Hack Night #21 Reactive programming in Spring Webflux](https://www.eventbrite.com/e/tickets-eonics-hack-night-21-reactive-programming-in-spring-webflux-91585581941)
 
+
+## Hints and trics
+
+-  Typical settings on a .bashrc file to get Gradle, GitPrompt, SDKMAN and some handy aliases. 
+```shell script
+export GRADLE_HOME=/opt/gradle/gradle-6.1.1
+export PATH=${GRADLE_HOME}/bin:${PATH}
+alias ll='ls -l -a --color=auto'
+if [ -f "/root/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source /root/.bash-git-prompt/gitprompt.sh
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/root/.sdkman"
+[[ -s "/root/.sdkman/bin/sdkman-init.sh" ]] && source "/root/.sdkman/bin/sdkman-init.sh"
+alias java13="sdk use java 13.0.2.hs-adpt"
+alias java12="sdk use 12.0.2.hs-adpt"
+alias java8="sdk use java 8.0.242.hs-adpt"
+alias m2disable="rm ~/.m2/settings.xml"
+alias m2enable="cp /your_repo_folder/settings.xml ~/.m2/"
+```
 ## References
 
 -   
