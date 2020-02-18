@@ -2,8 +2,10 @@ package org.jesperancinha.housing.service;
 
 import org.jesperancinha.housing.converter.CatConverter;
 import org.jesperancinha.housing.data.CatDto;
+import org.jesperancinha.housing.model.CareCenter;
 import org.jesperancinha.housing.model.Cat;
 import org.jesperancinha.housing.model.Owner;
+import org.jesperancinha.housing.repository.CareCenterRepository;
 import org.jesperancinha.housing.repository.CatRepository;
 import org.jesperancinha.housing.repository.OwnerRepository;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,14 @@ public class CatServiceImpl implements CatService {
 
     private final OwnerRepository ownerRepository;
 
-    public CatServiceImpl(CatRepository catRepository, OwnerRepository ownerRepository) {
+    private final CareCenterRepository careCenterRepository;
+
+    public CatServiceImpl(CatRepository catRepository,
+                          OwnerRepository ownerRepository,
+                          CareCenterRepository careCenterRepository) {
         this.catRepository = catRepository;
         this.ownerRepository = ownerRepository;
+        this.careCenterRepository = careCenterRepository;
     }
 
     @Override
@@ -33,10 +40,13 @@ public class CatServiceImpl implements CatService {
     @Override
     public CatDto getFullCatById(Long id) throws IOException, ExecutionException, InterruptedException {
         final ForkJoinPool forkJoinPool = new ForkJoinPool(2);
-        final ForkJoinTask<Owner> forkJoinTask = forkJoinPool.submit(() -> ownerRepository.getOwnerById(1L));
-        final Owner owner = forkJoinTask.get();
+        final ForkJoinTask<Owner> forkJoinTaskOwner = forkJoinPool.submit(() -> ownerRepository.getOwnerById(1L));
+        final ForkJoinTask<CareCenter> forkJoinTaskCareCenter = forkJoinPool.submit(() -> careCenterRepository.getCareCenterById(1L));
+        final Owner owner = forkJoinTaskOwner.get();
+        final CareCenter careCenter = forkJoinTaskCareCenter.get();
         final Cat catById = catRepository.getCatById(id);
         catById.getFormerOwners().add(owner);
+        catById.getCareCenters().add(careCenter);
         return CatConverter.toDto(catById);
     }
 }

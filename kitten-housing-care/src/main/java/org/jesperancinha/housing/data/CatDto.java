@@ -1,6 +1,7 @@
 package org.jesperancinha.housing.data;
 
 import lombok.Builder;
+import org.jesperancinha.housing.model.CareCenter;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public class CatDto {
     private Long age;
 
     private List<OwnerDto> formerOwners;
+
+    private List<CareCenterDto> careCenters;
 }

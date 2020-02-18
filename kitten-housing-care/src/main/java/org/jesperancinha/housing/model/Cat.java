@@ -17,4 +17,6 @@ public class Cat {
     private Long age;
 
     private List<Owner> formerOwners;
+
+    private List<CareCenter> careCenters;
 }

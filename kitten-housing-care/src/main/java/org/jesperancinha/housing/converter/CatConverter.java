@@ -15,6 +15,7 @@ public class CatConverter {
                 .pattern(catById.getPattern())
                 .species(catById.getSpecies())
                 .formerOwners(catById.getFormerOwners().stream().map(OwnerConverter::toDto).collect(Collectors.toList()))
+                .careCenters(catById.getCareCenters().stream().map(CareCenterConverter::toDto).collect(Collectors.toList()))
                 .build();
     }
 }
