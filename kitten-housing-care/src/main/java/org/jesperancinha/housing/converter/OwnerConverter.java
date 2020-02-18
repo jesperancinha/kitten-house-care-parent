@@ -7,7 +7,7 @@ public class OwnerConverter {
     public static OwnerDto toDto(Owner owner) {
         return OwnerDto.builder()
                 .name(owner.getName())
-                .addres(owner.getAddres())
+                .addres(owner.getAddress())
                 .build();
     }
 }

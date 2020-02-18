@@ -5,5 +5,5 @@ import org.jesperancinha.housing.model.Cat;
 import java.io.IOException;
 
 public interface CatRepository {
-    Cat getCatById(Long id) throws IOException;
+    Cat getCatById(Long id) throws IOException, InterruptedException;
 }

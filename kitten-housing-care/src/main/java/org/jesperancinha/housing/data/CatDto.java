@@ -1,7 +1,6 @@
 package org.jesperancinha.housing.data;
 
 import lombok.Builder;
-import org.jesperancinha.housing.model.Owner;
 
 import java.util.List;
 

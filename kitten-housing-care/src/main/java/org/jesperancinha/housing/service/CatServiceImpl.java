@@ -17,7 +17,7 @@ public class CatServiceImpl implements CatService {
     }
 
     @Override
-    public CatDto getCatById(Long id) throws IOException {
+    public CatDto getCatById(Long id) throws IOException, InterruptedException {
         return CatConverter.toDto(catRepository.getCatById(id));
     }
 }

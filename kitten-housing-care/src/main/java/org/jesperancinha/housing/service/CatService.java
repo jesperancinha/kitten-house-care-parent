@@ -5,5 +5,5 @@ import org.jesperancinha.housing.data.CatDto;
 import java.io.IOException;
 
 public interface CatService {
-    CatDto getCatById(Long id) throws IOException;
+    CatDto getCatById(Long id) throws IOException, InterruptedException;
 }

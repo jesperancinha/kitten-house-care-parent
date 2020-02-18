@@ -2,7 +2,6 @@ package org.jesperancinha.housing.controller;
 
 import org.jesperancinha.housing.data.CatDto;
 import org.jesperancinha.housing.service.CatService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +18,7 @@ public class CatControllerImpl implements CatController {
         this.catService = catService;
     }
 
-    public CatDto getCatByIdI(@PathVariable Long catId) throws IOException {
+    public CatDto getCatByIdI(@PathVariable Long catId) throws IOException, InterruptedException {
         return this.catService.getCatById(catId);
     }
 }

@@ -12,7 +12,7 @@ public class CatRepositoryImpl implements CatRepository {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public Cat getCatById(Long id) throws IOException {
+    public Cat getCatById(Long id) throws IOException, InterruptedException {
         return objectMapper.readValue(getClass().getResourceAsStream("/cat.json"), Cat.class);
     }
 }
