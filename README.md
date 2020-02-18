@@ -19,10 +19,18 @@ In our example we are going to look at a cat care center.
 
 For this exercise, it is important to understand that our focus is only on understanding Reactive Programming in action, detecting blocking calls using [Blockhound](https://github.com/reactor/BlockHound), and migrating a blocking application to a non-blocking application. 
 
-## Status
+As you can see, the unit tests are breaking and the build doesn't work.
 
-[Under construction...](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/UnderConstruction.md)
+In order to achieve the goal of this Hack Night, you just need to make sure that all 4 Getters work reactively:
 
+```text
+http://localhost:%d/cats/1
+http://localhost:%d/cats/full/1
+http://localhost:%d/cats
+http://localhost:%d/cats/full
+```
+
+Good Luck! 🦄👍
 
 ## Description
 
