@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class CareCenter {
 
+    private Long id;
+
     private String name;
 
     private String address;

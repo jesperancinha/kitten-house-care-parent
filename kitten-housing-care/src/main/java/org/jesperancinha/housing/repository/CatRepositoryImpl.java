@@ -13,6 +13,9 @@ public class CatRepositoryImpl implements CatRepository {
 
     @Override
     public Cat getCatById(Long id) throws IOException {
-        return objectMapper.readValue(getClass().getResourceAsStream("/cat.json"), Cat.class);
+        if (id.intValue() == 1L) {
+            return objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
+        }
+        return objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
     }
 }

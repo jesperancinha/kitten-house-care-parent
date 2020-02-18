@@ -11,9 +11,13 @@ import org.jesperancinha.housing.repository.OwnerRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class CatServiceImpl implements CatService {
@@ -48,5 +52,15 @@ public class CatServiceImpl implements CatService {
         catById.getFormerOwners().add(owner);
         catById.getCareCenters().add(careCenter);
         return CatConverter.toDto(catById);
+    }
+
+    @Override
+    public List<CatDto> getAllCats() throws ExecutionException, InterruptedException {
+        final ForkJoinPool forkJoinPool = new ForkJoinPool(2);
+        ForkJoinTask<CatDto> catForkJoinTask1 = forkJoinPool.submit(() -> getFullCatById(1L));
+        ForkJoinTask<CatDto> catForkJoinTask2 = forkJoinPool.submit(() -> getFullCatById(2L));
+        CatDto cat1 = catForkJoinTask1.get();
+        CatDto cat2 = catForkJoinTask2.get();
+        return Stream.of(cat1, cat2).collect(Collectors.toList());
     }
 }

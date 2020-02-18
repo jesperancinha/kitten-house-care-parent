@@ -66,13 +66,28 @@ class CatControllerImplTest {
     }
 
     @Test
+    void getAllCats_whenCall_testBlocking() {
+        assertThrows(Exception.class, () ->
+                Mono.delay(Duration.ofMillis(1))
+                        .doOnNext(it -> {
+                            try {
+                                catController.getAllCats();
+                            } catch (ExecutionException | InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        })
+                        .block()
+        );
+    }
+
+    @Test
     void getCatByIdI_whenCall_Ok() {
         final String uri = String.format("http://localhost:%d/cats/1", port);
 
         final CatDto catDto = restTemplate.getForObject(uri, CatDto.class);
 
         assertThat(catDto).isNotNull();
-        assertThat(catDto.getName()).isEqualTo("Fluffy");
+        assertThat(catDto.getName()).isEqualTo("Bocco");
         assertThat(catDto.getColor()).isEqualTo("orange");
         assertThat(catDto.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto.getAge()).isEqualTo(4L);
@@ -87,7 +102,7 @@ class CatControllerImplTest {
         final CatDto catDto = restTemplate.getForObject(uri, CatDto.class);
 
         assertThat(catDto).isNotNull();
-        assertThat(catDto.getName()).isEqualTo("Fluffy");
+        assertThat(catDto.getName()).isEqualTo("Bocco");
         assertThat(catDto.getColor()).isEqualTo("orange");
         assertThat(catDto.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto.getAge()).isEqualTo(4L);
@@ -107,5 +122,58 @@ class CatControllerImplTest {
         assertThat(careCenterDto.getCity()).isEqualTo("Nieuwegein");
         assertThat(careCenterDto.getPostCode()).isEqualTo("9999CC");
         assertThat(careCenterDto.getCountry()).isEqualTo("Nederland");
+    }
+
+    @Test
+    void getAll_whenCall_FullOk() {
+        final String uri = String.format("http://localhost:%d/cats", port);
+
+        final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
+
+        CatDto catDto1 = catDtos[0];
+        assertThat(catDto1).isNotNull();
+        assertThat(catDto1.getName()).isEqualTo("Bocco");
+        assertThat(catDto1.getColor()).isEqualTo("orange");
+        assertThat(catDto1.getSpecies()).isEqualTo("Katachtigen");
+        assertThat(catDto1.getAge()).isEqualTo(4L);
+        final List<OwnerDto> formerOwners = catDto1.getFormerOwners();
+        assertThat(formerOwners).isNotEmpty();
+        assertThat(formerOwners).hasSize(1);
+        OwnerDto ownerDto = formerOwners.get(0);
+        assertThat(ownerDto.getName()).isEqualTo("Dr. Michael");
+        assertThat(ownerDto.getAddres()).isEqualTo("Eye of Sauron");
+        final List<CareCenterDto> careCenters = catDto1.getCareCenters();
+        assertThat(careCenters).hasSize(1);
+        final CareCenterDto careCenterDto = careCenters.get(0);
+        assertThat(careCenterDto).isNotNull();
+        assertThat(careCenterDto.getName()).isEqualTo("Nieuwegein Kitten Center");
+        assertThat(careCenterDto.getAddress()).isEqualTo("Kittenstraat");
+        assertThat(careCenterDto.getRefNumber()).isEqualTo("23ABC");
+        assertThat(careCenterDto.getCity()).isEqualTo("Nieuwegein");
+        assertThat(careCenterDto.getPostCode()).isEqualTo("9999CC");
+        assertThat(careCenterDto.getCountry()).isEqualTo("Nederland");
+
+        CatDto catDto2 = catDtos[1];
+        assertThat(catDto2).isNotNull();
+        assertThat(catDto2.getName()).isEqualTo("Zuu");
+        assertThat(catDto2.getColor()).isEqualTo("black and white");
+        assertThat(catDto2.getSpecies()).isEqualTo("Katachtigen");
+        assertThat(catDto2.getAge()).isEqualTo(9L);
+        final List<OwnerDto> formerOwners2 = catDto2.getFormerOwners();
+        assertThat(formerOwners2).isNotEmpty();
+        assertThat(formerOwners2).hasSize(1);
+        OwnerDto ownerDto2 = formerOwners2.get(0);
+        assertThat(ownerDto2.getName()).isEqualTo("Dr. Michael");
+        assertThat(ownerDto2.getAddres()).isEqualTo("Eye of Sauron");
+        final List<CareCenterDto> careCenters2 = catDto2.getCareCenters();
+        assertThat(careCenters2).hasSize(1);
+        final CareCenterDto careCenterDto2 = careCenters2.get(0);
+        assertThat(careCenterDto2).isNotNull();
+        assertThat(careCenterDto2.getName()).isEqualTo("Nieuwegein Kitten Center");
+        assertThat(careCenterDto2.getAddress()).isEqualTo("Kittenstraat");
+        assertThat(careCenterDto2.getRefNumber()).isEqualTo("23ABC");
+        assertThat(careCenterDto2.getCity()).isEqualTo("Nieuwegein");
+        assertThat(careCenterDto2.getPostCode()).isEqualTo("9999CC");
+        assertThat(careCenterDto2.getCountry()).isEqualTo("Nederland");
     }
 }

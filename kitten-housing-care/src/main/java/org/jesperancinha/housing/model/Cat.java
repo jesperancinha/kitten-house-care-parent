@@ -7,6 +7,8 @@ import java.util.List;
 
 @Data
 public class Cat {
+    private Long id;
+
     private String name;
 
     private String color;
