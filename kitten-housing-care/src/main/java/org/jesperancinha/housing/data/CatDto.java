@@ -1,11 +1,13 @@
 package org.jesperancinha.housing.data;
 
-import lombok.Builder;
-import org.jesperancinha.housing.model.CareCenter;
+import lombok.*;
 
 import java.util.List;
 
 @Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CatDto {
     private String name;
 

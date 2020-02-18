@@ -2,6 +2,7 @@ package org.jesperancinha.housing.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,7 +17,7 @@ public class Cat {
 
     private Long age;
 
-    private List<Owner> formerOwners;
+    private List<Owner> formerOwners = new ArrayList<>();
 
-    private List<CareCenter> careCenters;
+    private List<CareCenter> careCenters = new ArrayList<>();
 }
