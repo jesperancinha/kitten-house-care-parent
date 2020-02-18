@@ -60,6 +60,7 @@ Voor vragen neem contact op met Chantal van der Kleij.
 ## Hints and trics
 
 -  Typical settings on a .bashrc file to get Gradle, GitPrompt, SDKMAN and some handy aliases. 
+
 ```shell script
 export GRADLE_HOME=/opt/gradle/gradle-6.1.1
 export PATH=${GRADLE_HOME}/bin:${PATH}
