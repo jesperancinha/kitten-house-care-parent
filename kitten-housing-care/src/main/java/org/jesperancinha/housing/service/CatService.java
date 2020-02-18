@@ -11,5 +11,7 @@ public interface CatService {
 
     CatDto getFullCatById(Long id) throws IOException, ExecutionException, InterruptedException;
 
-    List<CatDto> getAllCats() throws ExecutionException, InterruptedException;
+    List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException;
+
+    List<CatDto> getAllCats() throws IOException;
 }

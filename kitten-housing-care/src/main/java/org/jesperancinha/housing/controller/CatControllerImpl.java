@@ -20,8 +20,12 @@ public class CatControllerImpl implements CatController {
         this.catService = catService;
     }
 
-   public List<CatDto> getAllCats() throws ExecutionException, InterruptedException {
+   public List<CatDto> getAllCats() throws ExecutionException, InterruptedException, IOException {
         return this.catService.getAllCats();
+    }
+
+   public List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException {
+        return this.catService.getFullAllCats();
     }
 
     public CatDto getCatByIdI(@PathVariable Long catId) throws IOException {

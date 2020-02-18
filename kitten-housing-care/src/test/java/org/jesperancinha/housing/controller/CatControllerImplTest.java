@@ -72,6 +72,21 @@ class CatControllerImplTest {
                         .doOnNext(it -> {
                             try {
                                 catController.getAllCats();
+                            } catch (ExecutionException | InterruptedException | IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        })
+                        .block()
+        );
+    }
+
+    @Test
+    void getFullAllCats_whenCall_testBlocking() {
+        assertThrows(Exception.class, () ->
+                Mono.delay(Duration.ofMillis(1))
+                        .doOnNext(it -> {
+                            try {
+                                catController.getFullAllCats();
                             } catch (ExecutionException | InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
@@ -125,12 +140,43 @@ class CatControllerImplTest {
     }
 
     @Test
-    void getAll_whenCall_FullOk() {
+    void getAll_whenCall_Ok() {
         final String uri = String.format("http://localhost:%d/cats", port);
 
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
-        CatDto catDto1 = catDtos[0];
+        assertThat(catDtos).isNotNull();
+        final CatDto catDto1 = catDtos[0];
+        assertThat(catDto1).isNotNull();
+        assertThat(catDto1.getName()).isEqualTo("Bocco");
+        assertThat(catDto1.getColor()).isEqualTo("orange");
+        assertThat(catDto1.getSpecies()).isEqualTo("Katachtigen");
+        assertThat(catDto1.getAge()).isEqualTo(4L);
+        final List<OwnerDto> formerOwners = catDto1.getFormerOwners();
+        assertThat(formerOwners).isEmpty();
+        final List<CareCenterDto> careCenters = catDto1.getCareCenters();
+        assertThat(careCenters).isEmpty();
+
+        CatDto catDto2 = catDtos[1];
+        assertThat(catDto2).isNotNull();
+        assertThat(catDto2.getName()).isEqualTo("Zuu");
+        assertThat(catDto2.getColor()).isEqualTo("black and white");
+        assertThat(catDto2.getSpecies()).isEqualTo("Katachtigen");
+        assertThat(catDto2.getAge()).isEqualTo(9L);
+        final List<OwnerDto> formerOwners2 = catDto2.getFormerOwners();
+        assertThat(formerOwners2).isEmpty();
+        final List<CareCenterDto> careCenters2 = catDto2.getCareCenters();
+        assertThat(careCenters2).isEmpty();
+    }
+
+    @Test
+    void getFullAll_whenCall_FullOk() {
+        final String uri = String.format("http://localhost:%d/cats/full", port);
+
+        final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
+
+        assertThat(catDtos).isNotNull();
+        final CatDto catDto1 = catDtos[0];
         assertThat(catDto1).isNotNull();
         assertThat(catDto1.getName()).isEqualTo("Bocco");
         assertThat(catDto1.getColor()).isEqualTo("orange");

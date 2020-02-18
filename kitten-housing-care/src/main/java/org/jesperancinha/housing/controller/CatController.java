@@ -15,7 +15,10 @@ import java.util.concurrent.ExecutionException;
 public interface CatController {
 
     @GetMapping
-    List<CatDto> getAllCats() throws ExecutionException, InterruptedException;
+    List<CatDto> getAllCats() throws ExecutionException, InterruptedException, IOException;
+
+    @GetMapping("/full")
+    List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException;
 
     @GetMapping("/{catId}")
     CatDto getCatByIdI(@PathVariable Long catId) throws IOException;
