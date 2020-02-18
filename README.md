@@ -1,4 +1,13 @@
-# Eonics Hack Night #21 Reactive programming met Spring Webflux
+# Eonics Hack Night #21 Reactive programming with Spring Webflux
+
+[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Eonics%20Hack%20Night%2021%20Reactive%20programming%20with%20Spring%20Webflux&color=informational)](https://bitbucket.org/jesperancinha/eonics-hacknight-webflux/src/master/) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9555b37dbdd41b1bdb2a5842001f6f5)](https://www.codacy.com/manual/jofisaes/eonics-hacknight-webflux?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/eonics-hacknight-webflux&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/bb/jesperancinha/eonics-hacknight-webflux.svg?style=svg)](https://circleci.com/bb/jesperancinha/eonics-hacknight-webflux)
+[![Build status](https://ci.appveyor.com/api/projects/status/87huceimotokx4vy?svg=true)](https://ci.appveyor.com/project/jesperancinha/eonics-hacknight-webflux)
+[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/eonics-hacknight-webflux/master)](https://bitbucket.org/jesperancinha/international-airports-service-root/addon/pipelines/home)
+
 
 # Introduction
 
