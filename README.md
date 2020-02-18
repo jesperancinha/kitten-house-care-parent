@@ -78,6 +78,7 @@ alias java8="sdk use java 8.0.242.hs-adpt"
 alias m2disable="rm ~/.m2/settings.xml"
 alias m2enable="cp /your_repo_folder/settings.xml ~/.m2/"
 ```
+
 ## References
 
 -   [SdkMan!](https://sdkman.io/)
