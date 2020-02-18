@@ -1,9 +1,8 @@
 package org.jesperancinha.housing.repository;
 
 import org.jesperancinha.housing.model.Owner;
-
-import java.io.IOException;
+import reactor.core.publisher.Mono;
 
 public interface OwnerRepository {
-    Owner getOwnerById(Long id) throws IOException;
+    Mono<Owner> getOwnerById(Long id);
 }

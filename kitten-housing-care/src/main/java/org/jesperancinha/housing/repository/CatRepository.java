@@ -1,9 +1,8 @@
 package org.jesperancinha.housing.repository;
 
 import org.jesperancinha.housing.model.Cat;
-
-import java.io.IOException;
+import reactor.core.publisher.Mono;
 
 public interface CatRepository {
-    Cat getCatById(Long id) throws IOException;
+    Mono<Cat> getCatById(Long id);
 }

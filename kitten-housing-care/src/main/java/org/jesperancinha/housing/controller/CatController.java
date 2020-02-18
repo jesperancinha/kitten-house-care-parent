@@ -5,24 +5,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/cats")
 public interface CatController {
 
     @GetMapping
-    List<CatDto> getAllCats() throws ExecutionException, InterruptedException, IOException;
+    Flux<CatDto> getAllCats();
 
     @GetMapping("/full")
-    List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException;
+    Flux<CatDto> getFullAllCats();
 
     @GetMapping("/{catId}")
-    CatDto getCatByIdI(@PathVariable Long catId) throws IOException;
+    Mono<CatDto> getCatByIdI(@PathVariable Long catId);
 
     @GetMapping("/full/{catId}")
-    CatDto getFullCatById(@PathVariable Long catId) throws IOException, ExecutionException, InterruptedException;
+    Mono<CatDto> getFullCatById(@PathVariable Long catId);
 }

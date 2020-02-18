@@ -1,22 +1,16 @@
 package org.jesperancinha.housing.service;
 
+import org.jesperancinha.housing.converter.CareCenterConverter;
 import org.jesperancinha.housing.converter.CatConverter;
+import org.jesperancinha.housing.converter.OwnerConverter;
 import org.jesperancinha.housing.data.CatDto;
-import org.jesperancinha.housing.model.CareCenter;
-import org.jesperancinha.housing.model.Cat;
-import org.jesperancinha.housing.model.Owner;
 import org.jesperancinha.housing.repository.CareCenterRepository;
 import org.jesperancinha.housing.repository.CatRepository;
 import org.jesperancinha.housing.repository.OwnerRepository;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 @Service
 public class CatServiceImpl implements CatService {
@@ -36,35 +30,29 @@ public class CatServiceImpl implements CatService {
     }
 
     @Override
-    public CatDto getCatById(Long id) throws IOException {
-        return CatConverter.toDto(catRepository.getCatById(id));
+    public Mono<CatDto> getCatById(Long id) {
+        return catRepository.getCatById(id).map(CatConverter::toDto);
     }
 
     @Override
-    public CatDto getFullCatById(Long id) throws IOException, ExecutionException, InterruptedException {
-        final ForkJoinPool forkJoinPool = new ForkJoinPool(2);
-        final ForkJoinTask<Owner> forkJoinTaskOwner = forkJoinPool.submit(() -> ownerRepository.getOwnerById(1L));
-        final ForkJoinTask<CareCenter> forkJoinTaskCareCenter = forkJoinPool.submit(() -> careCenterRepository.getCareCenterById(1L));
-        final Owner owner = forkJoinTaskOwner.get();
-        final CareCenter careCenter = forkJoinTaskCareCenter.get();
-        final Cat catById = catRepository.getCatById(id);
-        catById.getFormerOwners().add(owner);
-        catById.getCareCenters().add(careCenter);
-        return CatConverter.toDto(catById);
+    public Mono<CatDto> getFullCatById(Long id) {
+        return getCatById(id).map(catDto -> Mono.zip(
+                ownerRepository.getOwnerById(1L).subscribeOn(Schedulers.parallel()),
+                careCenterRepository.getCareCenterById(1L).subscribeOn(Schedulers.parallel()),
+                (owner, care) -> {
+                    catDto.getCareCenters().add(CareCenterConverter.toDto(care));
+                    catDto.getFormerOwners().add(OwnerConverter.toDto(owner));
+                    return catDto;
+                }).subscribeOn(Schedulers.parallel())).flatMap(Mono::from).subscribeOn(Schedulers.parallel());
     }
 
     @Override
-    public List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException {
-        final ForkJoinPool forkJoinPool = new ForkJoinPool(2);
-        ForkJoinTask<CatDto> catForkJoinTask1 = forkJoinPool.submit(() -> getFullCatById(1L));
-        ForkJoinTask<CatDto> catForkJoinTask2 = forkJoinPool.submit(() -> getFullCatById(2L));
-        CatDto cat1 = catForkJoinTask1.get();
-        CatDto cat2 = catForkJoinTask2.get();
-        return Stream.of(cat1, cat2).collect(Collectors.toList());
+    public Flux<CatDto> getFullAllCats() {
+        return Flux.merge(getFullCatById(1L), getFullCatById(2L));
     }
 
     @Override
-    public List<CatDto> getAllCats() throws IOException {
-        return Stream.of(catRepository.getCatById(1L), catRepository.getCatById(2L)).map(CatConverter::toDto).collect(Collectors.toList());
+    public Flux<CatDto> getAllCats() {
+        return Flux.merge(getCatById(1L), getCatById(2L));
     }
 }

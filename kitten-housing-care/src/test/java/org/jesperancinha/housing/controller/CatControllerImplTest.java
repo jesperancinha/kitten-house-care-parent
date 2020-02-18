@@ -4,22 +4,24 @@ import org.jesperancinha.housing.data.CareCenterDto;
 import org.jesperancinha.housing.data.CatDto;
 import org.jesperancinha.housing.data.OwnerDto;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import reactor.blockhound.BlockHound;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
+@ExtendWith(SpringExtension.class)
 class CatControllerImplTest {
 
     final RestTemplate restTemplate = new RestTemplate();
@@ -38,11 +40,7 @@ class CatControllerImplTest {
     void getCatByIdI_whenCall_testBlocking() {
         Mono.delay(Duration.ofMillis(1))
                 .doOnNext(it -> {
-                    try {
-                        catController.getCatByIdI(1L);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    catController.getCatByIdI(1L);
                 })
                 .block();
     }
@@ -50,39 +48,21 @@ class CatControllerImplTest {
     @Test
     void getFullCatById_whenCall_testBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> {
-                    try {
-                        catController.getFullCatById(1L);
-                    } catch (IOException | ExecutionException | InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .doOnNext(it -> catController.getFullCatById(1L))
                 .block();
     }
 
     @Test
     void getAllCats_whenCall_testBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> {
-                    try {
-                        catController.getAllCats();
-                    } catch (ExecutionException | InterruptedException | IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .doOnNext(it -> catController.getAllCats())
                 .block();
     }
 
     @Test
     void getFullAllCats_whenCall_testBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> {
-                    try {
-                        catController.getFullAllCats();
-                    } catch (ExecutionException | InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .doOnNext(it -> catController.getFullAllCats())
                 .block();
     }
 
@@ -137,7 +117,7 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = catDtos[0];
+        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Bocco")).findFirst().orElse(null);
         assertThat(catDto1).isNotNull();
         assertThat(catDto1.getName()).isEqualTo("Bocco");
         assertThat(catDto1.getColor()).isEqualTo("orange");
@@ -148,7 +128,7 @@ class CatControllerImplTest {
         final List<CareCenterDto> careCenters = catDto1.getCareCenters();
         assertThat(careCenters).isEmpty();
 
-        CatDto catDto2 = catDtos[1];
+        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Zuu")).findFirst().orElse(null);
         assertThat(catDto2).isNotNull();
         assertThat(catDto2.getName()).isEqualTo("Zuu");
         assertThat(catDto2.getColor()).isEqualTo("black and white");
@@ -167,7 +147,7 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = catDtos[0];
+        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Bocco")).findFirst().orElse(null);
         assertThat(catDto1).isNotNull();
         assertThat(catDto1.getName()).isEqualTo("Bocco");
         assertThat(catDto1.getColor()).isEqualTo("orange");
@@ -190,7 +170,7 @@ class CatControllerImplTest {
         assertThat(careCenterDto.getPostCode()).isEqualTo("9999CC");
         assertThat(careCenterDto.getCountry()).isEqualTo("Nederland");
 
-        CatDto catDto2 = catDtos[1];
+        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Zuu")).findFirst().orElse(null);
         assertThat(catDto2).isNotNull();
         assertThat(catDto2.getName()).isEqualTo("Zuu");
         assertThat(catDto2.getColor()).isEqualTo("black and white");

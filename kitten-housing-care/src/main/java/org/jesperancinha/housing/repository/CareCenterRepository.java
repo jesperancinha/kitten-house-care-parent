@@ -1,9 +1,8 @@
 package org.jesperancinha.housing.repository;
 
 import org.jesperancinha.housing.model.CareCenter;
-
-import java.io.IOException;
+import reactor.core.publisher.Mono;
 
 public interface CareCenterRepository {
-    CareCenter getCareCenterById(Long id) throws IOException;
+    Mono<CareCenter> getCareCenterById(Long id);
 }

@@ -1,17 +1,15 @@
 package org.jesperancinha.housing.service;
 
 import org.jesperancinha.housing.data.CatDto;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CatService {
-    CatDto getCatById(Long id) throws IOException;
+    Mono<CatDto> getCatById(Long id);
 
-    CatDto getFullCatById(Long id) throws IOException, ExecutionException, InterruptedException;
+    Mono<CatDto> getFullCatById(Long id);
 
-    List<CatDto> getFullAllCats() throws ExecutionException, InterruptedException;
+    Flux<CatDto> getFullAllCats();
 
-    List<CatDto> getAllCats() throws IOException;
+    Flux<CatDto> getAllCats();
 }

@@ -3,6 +3,7 @@ package org.jesperancinha.housing.repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jesperancinha.housing.model.Cat;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 
@@ -11,11 +12,17 @@ public class CatRepositoryImpl implements CatRepository {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    private Cat cat1 = objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
+    private Cat cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
+
+    public CatRepositoryImpl() throws IOException {
+    }
+
     @Override
-    public Cat getCatById(Long id) throws IOException {
+    public Mono<Cat> getCatById(Long id) {
         if (id.intValue() == 1L) {
-            return objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
+            return Mono.fromCallable(() -> cat1);
         }
-        return objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
+        return Mono.fromCallable(() -> cat2);
     }
 }
