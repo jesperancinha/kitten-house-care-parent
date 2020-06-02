@@ -1,12 +1,12 @@
-# Eonics Hack Night #21 Reactive programming with Spring Webflux
+# Kitten House Care
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Eonics%20Hack%20Night%2021%20Reactive%20programming%20with%20Spring%20Webflux&color=informational)](https://bitbucket.org/jesperancinha/eonics-hacknight-webflux/src/master/) 
+[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Kitten%20House%20Care&color=informational)](https://bitbucket.org/jesperancinha/kitten-house-care/src/master/) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9555b37dbdd41b1bdb2a5842001f6f5)](https://www.codacy.com/manual/jofisaes/eonics-hacknight-webflux?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/eonics-hacknight-webflux&amp;utm_campaign=Badge_Grade)
-[![CircleCI](https://circleci.com/bb/jesperancinha/eonics-hacknight-webflux.svg?style=svg)](https://circleci.com/bb/jesperancinha/eonics-hacknight-webflux)
-[![Build status](https://ci.appveyor.com/api/projects/status/87huceimotokx4vy?svg=true)](https://ci.appveyor.com/project/jesperancinha/eonics-hacknight-webflux)
-[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/eonics-hacknight-webflux/master)](https://bitbucket.org/jesperancinha/international-airports-service-root/addon/pipelines/home)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9555b37dbdd41b1bdb2a5842001f6f5)](https://www.codacy.com/manual/jofisaes/kitten-house-care?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/bb/jesperancinha/kitten-house-care.svg?style=svg)](https://circleci.com/bb/jesperancinha/kitten-house-care)
+[![Build status](https://ci.appveyor.com/api/projects/status/87huceimotokx4vy?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care)
+[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/kitten-house-care/master)](https://bitbucket.org/jesperancinha/kitten-house-care/addon/pipelines/home)
 
 
 # Introduction
@@ -34,64 +34,11 @@ http://localhost:%d/cats
 http://localhost:%d/cats/full
 ```
 
-Good Luck! 🦄👍
-
-## Description
-
-At the end of this session we will look into WebFlux exercises to complete.
-
-## About this event (In Dutch)
-
-Op 19 februari 2020 organiseert Eonics de 21ste Open Hack Night. Dit keer zal Eonics consultant João Esperancinha ons een introductie geven in Reactive programming met Spring Webflux.
-
-Na de coding challenge van januari gaan we voor februari weer "back to the roots" met een ouderwetse hack night over een Java/Kotlin gerelateerd onderwerp, waarbij we natuurlijk ook zelf aan de slag gaan met de materie.
-
-Zoals altijd regelen we eten en drinken, inclusief vegetarische en halal opties, maar neem wel je eigen laptop mee zodat je mee kan doen aan de workshop.
-
-Alles op een rij
-
--   Waar: Eonics HQ
--   Wanneer: Woensdag 19 februari 2019
--   Wat: Reactive programming met Spring Webflux
--   Spreker: [João Esperancinha](jofisaes@gmail.com)
--   Hoe laat: inloop vanaf 17:00 uiterlijk 17:45 aanwezig
--   Eten & drinken is aanwezig, inclusief vegetarische & halal opties
--   Aanmelden: RSVP via Eventbrite
-
-Voor vragen neem contact op met Chantal van der Kleij.
 
 ## Domain knowledge
 
 -   [Meet Zuu – The Cat Who Embodies The Feeling When You Hear Your Alarm Clock Start Ringing](https://www.boredpanda.com/funny-exotic-long-hair-cat-zuu/)
 -   [Zuu and Bocco](https://ourfunnylittlesite.com/meet-zuu-and-bocco-adorable-Bocco-cats-with-round-faces/)
-
-## Where to sign in
-
--   [Eonics Hack Night #21 Reactive programming in Spring Webflux](https://www.eventbrite.com/e/tickets-eonics-hack-night-21-reactive-programming-in-spring-webflux-91585581941)
-
-
-## Hints and trics
-
--  Typical settings on a .bashrc file to get Gradle, GitPrompt, SDKMAN and some handy aliases. 
-
-```bash
-export GRADLE_HOME=/opt/gradle/gradle-6.1.1
-export PATH=${GRADLE_HOME}/bin:${PATH}
-alias ll='ls -l -a --color=auto'
-if [ -f "/root/.bash-git-prompt/gitprompt.sh" ]; then
-    GIT_PROMPT_ONLY_IN_REPO=1
-    source /root/.bash-git-prompt/gitprompt.sh
-fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/root/.sdkman"
-[[ -s "/root/.sdkman/bin/sdkman-init.sh" ]] && source "/root/.sdkman/bin/sdkman-init.sh"
-alias java13="sdk use java 13.0.2.hs-adpt"
-alias java12="sdk use 12.0.2.hs-adpt"
-alias java8="sdk use java 8.0.242.hs-adpt"
-alias m2disable="rm ~/.m2/settings.xml"
-alias m2enable="cp /your_repo_folder/settings.xml ~/.m2/"
-```
 
 ## References
 
