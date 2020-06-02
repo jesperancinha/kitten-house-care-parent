@@ -1,13 +1,13 @@
 # Kitten House Care
 
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=Checkout%20this%20@bitbucket%20repo%20by%20@joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB:%20https://bitbucket.org/jesperancinha/kitten-house-care-parent/src/master/)
-[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Kitten%20House%20Care&color=informational)](https://bitbucket.org/jesperancinha/kitten-house-care/src/master/) 
+[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Kitten%20House%20Care&color=informational)](https://bitbucket.org/jesperancinha/kitten-house-care-parent/src/master/) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9555b37dbdd41b1bdb2a5842001f6f5)](https://www.codacy.com/manual/jofisaes/kitten-house-care?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care&amp;utm_campaign=Badge_Grade)
-[![CircleCI](https://circleci.com/bb/jesperancinha/kitten-house-care.svg?style=svg)](https://circleci.com/bb/jesperancinha/kitten-house-care)
-[![Build status](https://ci.appveyor.com/api/projects/status/87huceimotokx4vy?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care)
-[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/kitten-house-care/master)](https://bitbucket.org/jesperancinha/kitten-house-care/addon/pipelines/home)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a61b7f1783d4394a183d53c2564c728)](https://www.codacy.com/manual/jofisaes/kitten-house-care-parent?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care-parent&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/bb/jesperancinha/kitten-house-care-parent.svg?style=svg)](https://circleci.com/bb/jesperancinha/kitten-house-care-parent)
+[![Build status](https://ci.appveyor.com/api/projects/status/jnsit0favwu0j0w0?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care-parent)
+[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/kitten-house-care-parent/master)](https://bitbucket.org/jesperancinha/kitten-house-care-parent/addon/pipelines/home)
 
 
 # Introduction
