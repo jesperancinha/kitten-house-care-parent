@@ -12,8 +12,8 @@ public class CatRepositoryImpl implements CatRepository {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    private Cat cat1 = objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
-    private Cat cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
+    private final Cat cat1 = objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
+    private final Cat cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
 
     public CatRepositoryImpl() throws IOException {
     }

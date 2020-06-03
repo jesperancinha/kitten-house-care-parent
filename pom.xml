@@ -6,12 +6,32 @@
     <modules>
         <module>kitten-house-care</module>
     </modules>
+    <properties>
+        <java.version>14</java.version>
+        <blockhound.version>1.0.2.RELEASE</blockhound.version>
+    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.projectreactor.tools</groupId>
+                <artifactId>blockhound-junit-platform</artifactId>
+                <version>${blockhound.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.projectreactor.tools</groupId>
+                <artifactId>blockhound</artifactId>
+                <version>${blockhound.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <packaging>pom</packaging>
 </project>
