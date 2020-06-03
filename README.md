@@ -42,12 +42,6 @@ http://localhost:%d/cats
 http://localhost:%d/cats/full
 ```
 
-
-## Domain knowledge
-
--   [Meet Zuu – The Cat Who Embodies The Feeling When You Hear Your Alarm Clock Start Ringing](https://www.boredpanda.com/funny-exotic-long-hair-cat-zuu/)
--   [Zuu and Bocco](https://ourfunnylittlesite.com/meet-zuu-and-bocco-adorable-Bocco-cats-with-round-faces/)
-
 ## References
 
 -   [SdkMan!](https://sdkman.io/)

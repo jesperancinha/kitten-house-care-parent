@@ -73,7 +73,7 @@ class CatControllerImplTest {
         final CatDto catDto = restTemplate.getForObject(uri, CatDto.class);
 
         assertThat(catDto).isNotNull();
-        assertThat(catDto.getName()).isEqualTo("Bocco");
+        assertThat(catDto.getName()).isEqualTo("Lania");
         assertThat(catDto.getColor()).isEqualTo("orange");
         assertThat(catDto.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto.getAge()).isEqualTo(4L);
@@ -88,7 +88,7 @@ class CatControllerImplTest {
         final CatDto catDto = restTemplate.getForObject(uri, CatDto.class);
 
         assertThat(catDto).isNotNull();
-        assertThat(catDto.getName()).isEqualTo("Bocco");
+        assertThat(catDto.getName()).isEqualTo("Lania");
         assertThat(catDto.getColor()).isEqualTo("orange");
         assertThat(catDto.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto.getAge()).isEqualTo(4L);
@@ -117,9 +117,9 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Bocco")).findFirst().orElse(null);
+        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Lania")).findFirst().orElse(null);
         assertThat(catDto1).isNotNull();
-        assertThat(catDto1.getName()).isEqualTo("Bocco");
+        assertThat(catDto1.getName()).isEqualTo("Lania");
         assertThat(catDto1.getColor()).isEqualTo("orange");
         assertThat(catDto1.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto1.getAge()).isEqualTo(4L);
@@ -128,9 +128,9 @@ class CatControllerImplTest {
         final List<CareCenterDto> careCenters = catDto1.getCareCenters();
         assertThat(careCenters).isEmpty();
 
-        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Zuu")).findFirst().orElse(null);
+        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Mit")).findFirst().orElse(null);
         assertThat(catDto2).isNotNull();
-        assertThat(catDto2.getName()).isEqualTo("Zuu");
+        assertThat(catDto2.getName()).isEqualTo("Mit");
         assertThat(catDto2.getColor()).isEqualTo("black and white");
         assertThat(catDto2.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto2.getAge()).isEqualTo(9L);
@@ -147,9 +147,9 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Bocco")).findFirst().orElse(null);
+        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Lania")).findFirst().orElse(null);
         assertThat(catDto1).isNotNull();
-        assertThat(catDto1.getName()).isEqualTo("Bocco");
+        assertThat(catDto1.getName()).isEqualTo("Lania");
         assertThat(catDto1.getColor()).isEqualTo("orange");
         assertThat(catDto1.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto1.getAge()).isEqualTo(4L);
@@ -170,9 +170,9 @@ class CatControllerImplTest {
         assertThat(careCenterDto.getPostCode()).isEqualTo("9999CC");
         assertThat(careCenterDto.getCountry()).isEqualTo("Nederland");
 
-        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Zuu")).findFirst().orElse(null);
+        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Mit")).findFirst().orElse(null);
         assertThat(catDto2).isNotNull();
-        assertThat(catDto2.getName()).isEqualTo("Zuu");
+        assertThat(catDto2.getName()).isEqualTo("Mit");
         assertThat(catDto2.getColor()).isEqualTo("black and white");
         assertThat(catDto2.getSpecies()).isEqualTo("Katachtigen");
         assertThat(catDto2.getAge()).isEqualTo(9L);
