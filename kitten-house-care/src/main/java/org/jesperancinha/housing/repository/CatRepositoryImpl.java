@@ -23,6 +23,9 @@ public class CatRepositoryImpl implements CatRepository {
         if (id.intValue() == 1L) {
             return Mono.fromCallable(() -> cat1);
         }
-        return Mono.fromCallable(() -> cat2);
+        if (id.intValue() == 2L) {
+            return Mono.fromCallable(() -> cat2);
+        }
+        return null;
     }
 }
