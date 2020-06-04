@@ -3,7 +3,6 @@ package org.jesperancinha.housing.repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jesperancinha.housing.model.CareCenter;
 import org.springframework.stereotype.Repository;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class CareCenterRepositoryImpl implements CareCenterRepository {
 
     public CareCenterRepositoryImpl(ObjectMapper objectMapper) throws IOException {
         this.careCenters = objectMapper
-            .readValue(getClass().getResourceAsStream("/carecenter.json"), CareCenter[].class);
+            .readValue(getClass().getResourceAsStream("/carecenters.json"), CareCenter[].class);
 
     }
 
@@ -32,7 +31,7 @@ public class CareCenterRepositoryImpl implements CareCenterRepository {
     @Override
     public Mono<List<CareCenter>> getCareCentersByIds(List<Long> careCenteIds) {
         return Mono.fromCallable(
-            () -> Arrays.stream(careCenters).filter(careCenter -> careCenteIds.contains(careCenter.getId())).collect(
-                Collectors.toList()));
+            () -> Arrays.stream(careCenters).filter(careCenter -> careCenteIds.contains(careCenter.getId()))
+                .collect(Collectors.toList()));
     }
 }
