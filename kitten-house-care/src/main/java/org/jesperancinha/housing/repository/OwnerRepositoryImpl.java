@@ -1,7 +1,6 @@
 package org.jesperancinha.housing.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jesperancinha.housing.model.CareCenter;
 import org.jesperancinha.housing.model.Owner;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -29,7 +28,21 @@ public class OwnerRepositoryImpl implements OwnerRepository {
 
     @Override
     public Mono<List<Owner>> getOwnersByIds(List<Long> formerOwners) {
-        return Mono.fromCallable(() -> Arrays.stream(owners).filter(owner -> formerOwners.contains(owner.getId())).collect(
-            Collectors.toList()));
+        return Mono.fromCallable(() -> Arrays.stream(owners).filter(owner -> formerOwners.contains(owner.getId()))
+            .collect(Collectors.toList()));
+    }
+
+    @Override
+    public Mono<String> checkLiability(String address) {
+        return Flux
+            .fromStream(() -> Arrays.stream(owners).filter(owner -> owner.getAddress().equalsIgnoreCase(address)))
+            .reduce((owner, owner2) -> {
+                if (owner.getRating() > owner2.getRating()) {
+                    return owner2;
+                }
+                return owner;
+            }).map(owner -> owner.getRating() <= 0 ?
+                "NOK" :
+                "OK");
     }
 }

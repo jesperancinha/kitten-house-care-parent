@@ -62,4 +62,5 @@ public class CatServiceImpl implements CatService {
     public Flux<CatDto> getAllCats() {
         return Flux.merge(getCatById(1L), getCatById(2L));
     }
+
 }
