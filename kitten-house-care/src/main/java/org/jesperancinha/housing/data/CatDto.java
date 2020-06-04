@@ -5,7 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.List.of;
 
 @Builder
 @Getter
@@ -22,7 +25,7 @@ public class CatDto {
 
     private Long age;
 
-    private List<OwnerDto> formerOwners;
+    private final List<OwnerDto> formerOwners = new ArrayList<>();
 
-    private List<CareCenterDto> careCenters;
+    private final List<CareCenterDto> careCenters = new ArrayList<>();
 }

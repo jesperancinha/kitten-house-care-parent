@@ -19,7 +19,7 @@ public class Cat {
 
     private Long age;
 
-    private List<Owner> formerOwners = new ArrayList<>();
+    private List<Long> formerOwners = new ArrayList<>();
 
-    private List<CareCenter> careCenters = new ArrayList<>();
+    private List<Long> careCenters = new ArrayList<>();
 }

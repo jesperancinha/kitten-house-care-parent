@@ -9,4 +9,6 @@ public class Owner {
     private String name;
 
     private String address;
+
+    private Integer rating;
 }

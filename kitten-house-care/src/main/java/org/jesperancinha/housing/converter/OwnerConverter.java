@@ -5,9 +5,6 @@ import org.jesperancinha.housing.model.Owner;
 
 public class OwnerConverter {
     public static OwnerDto toDto(Owner owner) {
-        return OwnerDto.builder()
-                .name(owner.getName())
-                .addres(owner.getAddress())
-                .build();
+        return OwnerDto.builder().name(owner.getName()).addres(owner.getAddress()).build();
     }
 }

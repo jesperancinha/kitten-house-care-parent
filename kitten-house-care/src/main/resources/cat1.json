@@ -6,5 +6,9 @@
   "pattern": "stripped",
   "age": 4,
   "formerOwners": [
+    1
+  ],
+  "careCenters": [
+    1
   ]
 }

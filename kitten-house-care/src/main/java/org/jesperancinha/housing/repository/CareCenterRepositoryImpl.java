@@ -3,21 +3,36 @@ package org.jesperancinha.housing.repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jesperancinha.housing.model.CareCenter;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class CareCenterRepositoryImpl implements CareCenterRepository {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
-    private CareCenter careCenter = objectMapper.readValue(getClass().getResourceAsStream("/carecenter.json"), CareCenter.class);
+    private final CareCenter[] careCenters;
 
-    public CareCenterRepositoryImpl() throws IOException {
+    public CareCenterRepositoryImpl(ObjectMapper objectMapper) throws IOException {
+        this.careCenters = objectMapper
+            .readValue(getClass().getResourceAsStream("/carecenter.json"), CareCenter[].class);
+
     }
 
     @Override
     public Mono<CareCenter> getCareCenterById(Long id) {
-        return Mono.fromCallable(() -> careCenter);
+        return Mono.fromCallable(
+            () -> Arrays.stream(careCenters).filter(careCenter -> careCenter.getId().equals(id)).findFirst()
+                .orElse(null));
+    }
+
+    @Override
+    public Mono<List<CareCenter>> getCareCentersByIds(List<Long> careCenteIds) {
+        return Mono.fromCallable(
+            () -> Arrays.stream(careCenters).filter(careCenter -> careCenteIds.contains(careCenter.getId())).collect(
+                Collectors.toList()));
     }
 }

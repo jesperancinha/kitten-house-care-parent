@@ -10,12 +10,12 @@ import java.io.IOException;
 @Repository
 public class CatRepositoryImpl implements CatRepository {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final Cat cat1;
+    private final Cat cat2;
 
-    private final Cat cat1 = objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
-    private final Cat cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
-
-    public CatRepositoryImpl() throws IOException {
+    public CatRepositoryImpl(ObjectMapper objectMapper) throws IOException {
+        this.cat1 = objectMapper.readValue(getClass().getResourceAsStream("/cat1.json"), Cat.class);
+        this.cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
     }
 
     @Override

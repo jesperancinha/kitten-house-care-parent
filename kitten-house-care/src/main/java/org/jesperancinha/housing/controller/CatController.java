@@ -19,8 +19,12 @@ public interface CatController {
     Flux<CatDto> getFullAllCats();
 
     @GetMapping("/{catId}")
-    Mono<CatDto> getCatByIdI(@PathVariable Long catId);
+    Mono<CatDto> getCatByIdI(
+        @PathVariable
+            Long catId);
 
     @GetMapping("/full/{catId}")
-    Mono<CatDto> getFullCatById(@PathVariable Long catId);
+    Mono<CatDto> getFullCatById(
+        @PathVariable
+            Long catId);
 }

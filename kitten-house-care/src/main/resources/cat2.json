@@ -6,5 +6,9 @@
   "pattern": "spotted",
   "age": 9,
   "formerOwners": [
+    2
+  ],
+  "careCenters": [
+    1
   ]
 }
