@@ -37,30 +37,28 @@ class CatControllerImplTest {
     }
 
     @Test
-    void getCatByIdI_whenCall_testBlocking() {
+    void getCatByIdI_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> {
-                    catController.getCatByIdI(1L);
-                })
+                .doOnNext(it -> catController.getCatByIdI(1L))
                 .block();
     }
 
     @Test
-    void getFullCatById_whenCall_testBlocking() {
+    void getFullCatById_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
                 .doOnNext(it -> catController.getFullCatById(1L))
                 .block();
     }
 
     @Test
-    void getAllCats_whenCall_testBlocking() {
+    void getAllCats_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
                 .doOnNext(it -> catController.getAllCats())
                 .block();
     }
 
     @Test
-    void getFullAllCats_whenCall_testBlocking() {
+    void getFullAllCats_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
                 .doOnNext(it -> catController.getFullAllCats())
                 .block();
