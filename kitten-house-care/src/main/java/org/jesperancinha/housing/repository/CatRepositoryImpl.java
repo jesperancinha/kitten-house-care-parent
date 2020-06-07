@@ -20,14 +20,21 @@ public class CatRepositoryImpl implements CatRepository {
 
     @Override
     public Mono<Cat> getCatById(Long id) {
-        return Mono.fromCallable(() -> {
-            if (id.intValue() == 1L) {
-                return cat1;
-            }
-            if (id.intValue() == 2L) {
-                return cat2;
-            }
-            return null;
-        });
+        return Mono.fromCallable(() -> getCat(id));
+    }
+
+    @Override
+    public Cat getCatByIdNonReactive(Long id) {
+        return getCat(id);
+    }
+
+    private Cat getCat(Long id) {
+        if (id.intValue() == 1L) {
+            return cat1;
+        }
+        if (id.intValue() == 2L) {
+            return cat2;
+        }
+        return null;
     }
 }

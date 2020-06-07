@@ -28,8 +28,7 @@ public class OwnerRepositoryImpl implements OwnerRepository {
 
     @Override
     public Mono<List<Owner>> getOwnersByIds(List<Long> formerOwners) {
-        return Mono.fromCallable(() -> Arrays.stream(owners).filter(owner -> formerOwners.contains(owner.getId()))
-            .collect(Collectors.toList()));
+        return Mono.fromCallable(() -> getOwners(formerOwners));
     }
 
     @Override
@@ -44,5 +43,16 @@ public class OwnerRepositoryImpl implements OwnerRepository {
             }).map(owner -> owner.getRating() <= 0 ?
                 "NOK" :
                 "OK");
+    }
+
+    @Override
+    public List<Owner> getOwnersByIdsNonReactive(List<Long> formerOwners) {
+        return getOwners(formerOwners);
+    }
+
+    private List<Owner> getOwners(List<Long> formerOwners) {
+        return Arrays.stream(owners)
+            .filter(owner -> formerOwners.contains(owner.getId()))
+            .collect(Collectors.toList());
     }
 }

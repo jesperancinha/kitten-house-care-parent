@@ -31,7 +31,17 @@ public class CareCenterRepositoryImpl implements CareCenterRepository {
     @Override
     public Mono<List<CareCenter>> getCareCentersByIds(List<Long> careCenteIds) {
         return Mono.fromCallable(
-            () -> Arrays.stream(careCenters).filter(careCenter -> careCenteIds.contains(careCenter.getId()))
-                .collect(Collectors.toList()));
+            () -> getCareCenters(careCenteIds));
+    }
+
+    @Override
+    public List<CareCenter> getCareCentersByIdsNonReactive(List<Long> careCenters) {
+        return getCareCenters(careCenters);
+    }
+
+    private List<CareCenter> getCareCenters(List<Long> careCenteIds) {
+        return Arrays.stream(careCenters)
+            .filter(careCenter -> careCenteIds.contains(careCenter.getId()))
+            .collect(Collectors.toList());
     }
 }

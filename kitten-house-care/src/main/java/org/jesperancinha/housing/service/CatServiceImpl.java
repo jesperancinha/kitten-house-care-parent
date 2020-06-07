@@ -12,6 +12,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Service
 public class CatServiceImpl implements CatService {
 
@@ -61,6 +66,25 @@ public class CatServiceImpl implements CatService {
     @Override
     public Flux<CatDto> getAllCats() {
         return Flux.merge(getCatById(1L), getCatById(2L));
+    }
+
+    @Override
+    public List<CatDto> getFullAllCatsNonReactive() {
+        return Stream.of(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
+            .map(catsNonReactive -> {
+                CatDto catDto = CatConverter.toDto(catsNonReactive);
+                catDto.getCareCenters().addAll(
+                    careCenterRepository
+                        .getCareCentersByIdsNonReactive(catsNonReactive.getCareCenters())
+                        .stream().map(CareCenterConverter::toDto)
+                .collect(Collectors.toList()));
+                catDto.getFormerOwners().addAll(
+                    ownerRepository
+                        .getOwnersByIdsNonReactive(catsNonReactive.getFormerOwners())
+                        .stream().map(OwnerConverter::toDto)
+                .collect(Collectors.toList()));
+                return catDto;
+            }).collect(Collectors.toList());
     }
 
 }

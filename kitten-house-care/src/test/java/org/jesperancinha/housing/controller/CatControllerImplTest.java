@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -39,29 +40,43 @@ class CatControllerImplTest {
     @Test
     void getCatByIdI_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> catController.getCatByIdI(1L))
-                .block();
+            .doOnNext(it -> catController.getCatByIdI(1L))
+            .block();
     }
 
     @Test
     void getFullCatById_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> catController.getFullCatById(1L))
-                .block();
+            .doOnNext(it -> catController.getFullCatById(1L))
+            .block();
     }
 
     @Test
     void getAllCats_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> catController.getAllCats())
-                .block();
+            .doOnNext(it -> catController.getAllCats())
+            .block();
     }
 
     @Test
     void getFullAllCats_whenCall_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-                .doOnNext(it -> catController.getFullAllCats())
-                .block();
+            .doOnNext(it -> catController.getFullAllCats())
+            .block();
+    }
+
+    @Test
+    void getFullAllCatsNonReaciveForTest_whenCall_Blocking() {
+        Mono.delay(Duration.ofMillis(1))
+            .doOnNext(it -> catController.getFullAllCatsReactiveForTest())
+            .block();
+    }
+
+    @Test
+    void getFullAllCatsNonReacive_whenCall_Blocking() {
+        assertThatExceptionOfType(Exception.class).isThrownBy(() -> Mono.delay(Duration.ofMillis(1))
+            .doOnNext(it -> catController.getFullAllCatsNonReactive())
+            .block());
     }
 
     @Test
@@ -115,7 +130,11 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Lania")).findFirst().orElse(null);
+        final CatDto catDto1 = Arrays.stream(catDtos)
+            .filter(catDto -> catDto.getName()
+                .equals("Lania"))
+            .findFirst()
+            .orElse(null);
         assertThat(catDto1).isNotNull();
         assertThat(catDto1.getName()).isEqualTo("Lania");
         assertThat(catDto1.getColor()).isEqualTo("orange");
@@ -126,7 +145,11 @@ class CatControllerImplTest {
         final List<CareCenterDto> careCenters = catDto1.getCareCenters();
         assertThat(careCenters).isEmpty();
 
-        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Mit")).findFirst().orElse(null);
+        final CatDto catDto2 = Arrays.stream(catDtos)
+            .filter(catDto -> catDto.getName()
+                .equals("Mit"))
+            .findFirst()
+            .orElse(null);
         assertThat(catDto2).isNotNull();
         assertThat(catDto2.getName()).isEqualTo("Mit");
         assertThat(catDto2.getColor()).isEqualTo("black and white");
@@ -145,7 +168,11 @@ class CatControllerImplTest {
         final CatDto[] catDtos = restTemplate.getForObject(uri, CatDto[].class);
 
         assertThat(catDtos).isNotNull();
-        final CatDto catDto1 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Lania")).findFirst().orElse(null);
+        final CatDto catDto1 = Arrays.stream(catDtos)
+            .filter(catDto -> catDto.getName()
+                .equals("Lania"))
+            .findFirst()
+            .orElse(null);
         assertThat(catDto1).isNotNull();
         assertThat(catDto1.getName()).isEqualTo("Lania");
         assertThat(catDto1.getColor()).isEqualTo("orange");
@@ -168,7 +195,11 @@ class CatControllerImplTest {
         assertThat(careCenterDto.getPostCode()).isEqualTo("9999CC");
         assertThat(careCenterDto.getCountry()).isEqualTo("Nederland");
 
-        final CatDto catDto2 = Arrays.stream(catDtos).filter(catDto -> catDto.getName().equals("Mit")).findFirst().orElse(null);
+        final CatDto catDto2 = Arrays.stream(catDtos)
+            .filter(catDto -> catDto.getName()
+                .equals("Mit"))
+            .findFirst()
+            .orElse(null);
         assertThat(catDto2).isNotNull();
         assertThat(catDto2.getName()).isEqualTo("Mit");
         assertThat(catDto2.getColor()).isEqualTo("black and white");

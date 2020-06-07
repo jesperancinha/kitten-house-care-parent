@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cats")
 public class CatControllerImpl implements CatController {
@@ -21,15 +23,35 @@ public class CatControllerImpl implements CatController {
         return this.catService.getAllCats();
     }
 
-    public Flux<CatDto> getFullAllCats() {
-        return this.catService.getFullAllCats();
-    }
-
     public Mono<CatDto> getCatByIdI(Long catId) {
         return this.catService.getCatById(catId);
     }
 
     public Mono<CatDto> getFullCatById(Long catId) {
         return this.catService.getFullCatById(catId);
+    }
+
+    public Flux<CatDto> getFullAllCats() {
+        return this.catService.getFullAllCats();
+    }
+
+    public Flux<CatDto> getFullAllCatsReactiveForTest() {
+        return this.catService.getFullAllCats().map(catDto -> {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return catDto;
+        });
+    }
+
+    public List<CatDto> getFullAllCatsNonReactive() {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return this.catService.getFullAllCatsNonReactive();
     }
 }

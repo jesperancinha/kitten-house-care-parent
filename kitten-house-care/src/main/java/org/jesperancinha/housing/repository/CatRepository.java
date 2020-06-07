@@ -5,4 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface CatRepository {
     Mono<Cat> getCatById(Long id);
+
+    Cat getCatByIdNonReactive(Long id);
 }
