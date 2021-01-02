@@ -34,7 +34,7 @@ class OwnerControllerImplTest {
     @Test
     void checkLiability_whenCallPositive_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-            .doOnNext(it -> ownerController.checkLiability("Verrekijkers"))
+            .doOnNext(it -> ownerController.checkLiability("De Veluwe"))
             .block();
     }
 
@@ -47,7 +47,7 @@ class OwnerControllerImplTest {
 
     @Test
     void checkLiabilityI_whenCallJoao_OK() {
-        final String uri = String.format("http://localhost:%d/owners/Verrekijkers", port);
+        final String uri = String.format("http://localhost:%d/owners/De Veluwe", port);
 
         final String result = restTemplate.getForObject(uri, String.class);
 
@@ -56,7 +56,7 @@ class OwnerControllerImplTest {
     }
 
     @Test
-    void checkLiabilityI_whenCallErwin_NOK() {
+    void checkLiabilityI_whenCallStromnelwan_NOK() {
         final String uri = String.format("http://localhost:%d/owners/The swamp", port);
 
         final String result = restTemplate.getForObject(uri, String.class);

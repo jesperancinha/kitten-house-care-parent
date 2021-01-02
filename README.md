@@ -17,7 +17,7 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/spring-reactor-50.png "Spring Reactor")](https://www.docker.com/)
 ---
 
-# Introduction
+## Introduction
 
 Let's investigate WebFlux and the Reactive Programming paradigms.
 
@@ -27,19 +27,18 @@ In our example we are going to look at a cat care center.
 
 For this exercise, it is important to understand that our focus is only on understanding Reactive Programming in action, detecting blocking calls using [Blockhound](https://github.com/reactor/BlockHound), and migrating a blocking application to a non-blocking application. 
 
-If you try to run the build, the unit tests are breaking and the build doesn't work:
+## How to run
+This project has been tested with Java version 14:
+
+```bash
+sdk use java  14.0.1.hs-adpt
+```
+It is working with the `--enable-preview` option set.
+
+Installing it with standard maven command should work.
 
 ```bash
 mvn clean install
-```
-
-In order to achieve the goal of this Hack Night, you just need to make sure that all 4 Getters work reactively:
-
-```text
-http://localhost:%d/cats/1
-http://localhost:%d/cats/full/1
-http://localhost:%d/cats
-http://localhost:%d/cats/full
 ```
 
 ## References

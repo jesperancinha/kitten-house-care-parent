@@ -110,7 +110,7 @@ class CatControllerImplTest {
         assertThat(formerOwners).hasSize(1);
         OwnerDto ownerDto = formerOwners.get(0);
         assertThat(ownerDto.getName()).isEqualTo("Eng. João Esperancinha");
-        assertThat(ownerDto.getAddres()).isEqualTo("Verrekijkers");
+        assertThat(ownerDto.getAddres()).isEqualTo("De Veluwe");
         final List<CareCenterDto> careCenters = catDto.getCareCenters();
         assertThat(careCenters).hasSize(1);
         final CareCenterDto careCenterDto = careCenters.get(0);
@@ -183,7 +183,7 @@ class CatControllerImplTest {
         assertThat(formerOwners).hasSize(1);
         OwnerDto ownerDto = formerOwners.get(0);
         assertThat(ownerDto.getName()).isEqualTo("Eng. João Esperancinha");
-        assertThat(ownerDto.getAddres()).isEqualTo("Verrekijkers");
+        assertThat(ownerDto.getAddres()).isEqualTo("De Veluwe");
         final List<CareCenterDto> careCenters = catDto1.getCareCenters();
         assertThat(careCenters).hasSize(1);
         final CareCenterDto careCenterDto = careCenters.get(0);
@@ -209,7 +209,7 @@ class CatControllerImplTest {
         assertThat(formerOwners2).isNotEmpty();
         assertThat(formerOwners2).hasSize(1);
         OwnerDto ownerDto2 = formerOwners2.get(0);
-        assertThat(ownerDto2.getName()).isEqualTo("Eng. Erwin Zieligofski");
+        assertThat(ownerDto2.getName()).isEqualTo("Eng. Stromnelwan Zieligofski");
         assertThat(ownerDto2.getAddres()).isEqualTo("The swamp");
         final List<CareCenterDto> careCenters2 = catDto2.getCareCenters();
         assertThat(careCenters2).hasSize(1);

@@ -16,8 +16,8 @@ class OwnerRepositoryImplTest {
 
     @Test
     void givenLiable_checkLiability_Ok() {
-        Mono<String> verrekijkers = ownerRepository.checkLiability("Verrekijkers");
-        final String block = verrekijkers.block();
+        Mono<String> deVeluwe = ownerRepository.checkLiability("De Veluwe");
+        final String block = deVeluwe.block();
         assertThat(block).isEqualTo("OK");
     }
 
