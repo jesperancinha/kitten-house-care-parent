@@ -92,7 +92,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
-                    <argLine>--enable-preview -XX:+AllowRedefinitionToAddDeleteMethods</argLine>
+                    <argLine>${argLine} --enable-preview -XX:+AllowRedefinitionToAddDeleteMethods</argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -100,7 +100,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
+                    <argLine>${argLine} --enable-preview</argLine>
                 </configuration>
             </plugin>
             <plugin>
