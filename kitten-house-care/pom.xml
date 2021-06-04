@@ -65,7 +65,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-maven-plugin.version}</version>
                 <configuration>
-                    <jvmArguments>--enable-preview</jvmArguments>
+                    <jvmArguments>${jvmArguments} --enable-preview</jvmArguments>
                     <mainClass>org.jesperancinha.logistics.web.BridgeLogisticsApplication</mainClass>
                 </configuration>
                 <executions>
