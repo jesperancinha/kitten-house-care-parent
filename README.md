@@ -11,7 +11,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/jnsit0favwu0j0w0?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care-parent)
 [![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/kitten-house-care-parent/master)](https://bitbucket.org/jesperancinha/kitten-house-care-parent/addon/pipelines/home)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a61b7f1783d4394a183d53c2564c728)](https://www.codacy.com/manual/jofisaes/kitten-house-care-parent?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care-parent&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a61b7f1783d4394a183d53c2564c728)](https://www.codacy.com/manual/jofisaes/kitten-house-care-parent?utm_source=bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care-parent&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/7a61b7f1783d4394a183d53c2564c728)](https://www.codacy.com/bb/jesperancinha/kitten-house-care-parent/dashboard?utm_source=jesperancinha@bitbucket.org&utm_medium=referral&utm_content=jesperancinha/kitten-house-care-parent&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/bb/jesperancinha/kitten-house-care-parent/branch/master/graph/badge.svg?token=FXPVZ8DGTE)](https://codecov.io/bb/jesperancinha/kitten-house-care-parent)
