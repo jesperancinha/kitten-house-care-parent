@@ -7,7 +7,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![CircleCI](https://circleci.com/bb/jesperancinha/kitten-house-care-parent.svg?style=svg)](https://circleci.com/bb/jesperancinha/kitten-house-care-parent)
-[![Build Status](https://www.travis-ci.com/jesperancinha/kitten-house-care-parent.svg?branch=master)](https://www.travis-ci.com/jesperancinha/kitten-house-care-parent)
 [![Build status](https://ci.appveyor.com/api/projects/status/jnsit0favwu0j0w0?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care-parent)
 [![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/kitten-house-care-parent/master)](https://bitbucket.org/jesperancinha/kitten-house-care-parent/addon/pipelines/home)
 
