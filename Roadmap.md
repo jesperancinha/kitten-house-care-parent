@@ -2,6 +2,12 @@
 
 ## Roadmap to version 1.0.0 - Theme - All round Reactive Spring Application
 
+2021/09/26
+- Covert to Java 17
+- Makefile creation
+- Create root symlink for web
+- Create Angular Package for web-application
+
 Goals:
 
 - Optimistic and Pessimistic Locks

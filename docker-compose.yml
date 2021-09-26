@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+
+  kittem_house_care_psql:
+    hostname: kittem_house_care_psql
+    container_name: kittem_house_care_psql
+    build:
+      context: kitten-house-care-psql/.
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_MULTIPLE_DATABASES=bllogistics
+    ports:
+      - "5432:5432"
+    deploy:
+      resources:
+        limits:
+          memory: 100M
