@@ -43,7 +43,8 @@ For this exercise, it is important to understand that our focus is only on under
 This project has been tested with Java version 14:
 
 ```bash
-sdk use java  14.0.1.hs-adpt
+sdk install java 17-open
+sdk use java 17-open
 ```
 It is working with the `--enable-preview` option set.
 

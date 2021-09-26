@@ -7,8 +7,8 @@
         <module>kitten-house-care</module>
     </modules>
     <properties>
-        <java.version>14</java.version>
-        <blockhound.version>1.0.3.RELEASE</blockhound.version>
+        <java.version>17</java.version>
+        <blockhound.version>1.0.6.RELEASE</blockhound.version>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.11.RELEASE</version>
+        <version>2.5.5</version>
     </parent>
 
     <dependencyManagement>
