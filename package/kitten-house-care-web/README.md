@@ -1,3 +1,15 @@
+# Kitten House Care
+
+## Generation steps
+
+```shell
+npm install -g @angular/cli
+ng new kitten-house-care-web
+cd kitten-house-care-web
+ng generate service sse
+ng generate component home
+```
+
 # KittenHouseCareWeb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.

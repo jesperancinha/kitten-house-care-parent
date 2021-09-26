@@ -7,13 +7,13 @@
 - Makefile creation
 - Create root symlink for web
 - Create Angular Package for web-application
+- Spring update
 
 Goals:
 
-- Optimistic and Pessimistic Locks
-- Websockets
-- Angular project
-- Spring update
+- Optimistic and Pessimistic Locks (Concurrent Potential Carers)
+- ~~Websockets~~ / SSE (Cats found nationwide)
+- Angular project (Website)
 - Java 17 features
 - Kotest assertions. (Kotlin strictly for the unit tests)
 - Concurrency and Spring Batch

@@ -2,11 +2,13 @@ b: build
 build: build-npm build-maven
 build-npm:
 	cd package/kitten-house-care-web && yarn install && npm run build
+	cd package/kitten-house-care-mock && yarn install
 build-maven:
 	mvn clean install -DskipTests
 test:
 	mvn test
 	cd package/kitten-house-care-web && yarn install && npm run test
+	cd package/kitten-house-care-mock && yarn install
 test-maven:
 	mvn test
 local: no-test
