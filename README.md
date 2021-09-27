@@ -43,19 +43,25 @@ In our example we are going to look at a cat care center.
 For this exercise, it is important to understand that our focus is only on understanding Reactive Programming in action, detecting blocking calls using [Blockhound](https://github.com/reactor/BlockHound), and migrating a blocking application to a non-blocking application. 
 
 ## How to run
-This project has been tested with Java version 14:
+This project has been tested with Java version 17:
 
 ```bash
 sdk install java 17-open
 sdk use java 17-open
 ```
-It is working with the `--enable-preview` option set.
 
-Installing it with standard maven command should work.
+You can use this comand to build the Java dependencies
 
 ```bash
 mvn clean install
 ```
+
+Or this one to build everything from root:
+
+```bash
+make build
+```
+
 ## Generation steps
 
 ```shell
