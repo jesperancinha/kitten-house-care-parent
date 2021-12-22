@@ -11,6 +11,7 @@ pipelines:
         caches:
           - maven
         script: # Modify the commands below to build your repository.
-          - mvn clean install package -Preports jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
+          - mvn clean install
+          - mvn clean -Preports jacoco:prepare-agent install jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
           - bash <(curl -s https://codecov.io/bash)
           - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')

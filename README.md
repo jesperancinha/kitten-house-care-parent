@@ -68,6 +68,27 @@ make build
 ln -s package/kitten-house-care-web kitten-house-care-web
 ```
 
+## Running profiles
+
+-  Default profile
+
+```shell
+mvn clean install
+```
+
+- Report profile
+
+```shell
+mvn clean -Preports jacoco:prepare-agent install jacoco:report 
+```
+
+## Buy me a coffee
+
+I hope you enjoyed this repository. If you did, you can optionally please buy me a coffee, which supports me to constantly improve and make new free content regularly for everyone. Thank you so much!
+
+[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=jesperancinha&button_colour=046c46&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00 "title")](https://www.buymeacoffee.com/jesperancinha)
+
+
 ## References
 
 -   [How To Use Server-Sent Events in Node.js to Build a Realtime App](https://www.digitalocean.com/community/tutorials/nodejs-server-sent-events-build-realtime-app)
