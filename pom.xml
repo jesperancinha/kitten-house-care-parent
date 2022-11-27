@@ -19,7 +19,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <spring-boot-starter-parent.version>2.7.5</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.0.0</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
     </properties>
 
