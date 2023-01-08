@@ -16,7 +16,7 @@ jobs:
             distribution: 'adopt'
 
         - name: Build and Test MAVEN
-          run:  mvn clean install jacoco:prepare-agent package jacoco:report
+          run:  mvn clean -Preports install jacoco:prepare-agent package jacoco:report
 
         - name: Coverage Reports
           run: mvn omni-coveragereporter:report
