@@ -143,13 +143,16 @@
         </profile>
     </profiles>
     <build>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-maven-plugin.version}</version>
                 <configuration>
-                    <mainClass>org.jesperancinha.logistics.web.BridgeLogisticsApplication</mainClass>
+                    <mainClass>org.jesperancinha.housing.CatCareLauncher</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -184,14 +187,13 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>test</phase>
+                        <id>jacoco-report</id>
                         <goals>
                             <goal>report</goal>
                         </goals>

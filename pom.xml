@@ -22,6 +22,7 @@
         <spring-boot-starter-parent.version>3.0.1</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.1</omni-coveragereporter-maven-plugin.version>
+        <argLine>-Xmx2048m</argLine>
     </properties>
 
     <dependencyManagement>
@@ -56,13 +57,13 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>test</phase>
+                        <id>jacoco-report</id>
                         <goals>
                             <goal>report</goal>
                         </goals>
