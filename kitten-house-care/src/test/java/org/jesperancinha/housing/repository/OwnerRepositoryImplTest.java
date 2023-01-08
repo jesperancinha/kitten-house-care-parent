@@ -9,7 +9,7 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OwnerRepositoryImplTest {
-    private final OwnerRepository ownerRepository = new OwnerRepositoryImpl(new ObjectMapper());
+    private final OwnerRepositoryImpl ownerRepository = new OwnerRepositoryImpl(new ObjectMapper());
 
     OwnerRepositoryImplTest() throws IOException {
     }

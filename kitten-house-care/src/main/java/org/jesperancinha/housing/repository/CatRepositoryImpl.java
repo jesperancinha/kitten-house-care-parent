@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 import java.io.IOException;
 
 @Repository
-public class CatRepositoryImpl implements CatRepository {
+public class CatRepositoryImpl {
 
     private final Cat cat1;
     private final Cat cat2;
@@ -18,12 +18,10 @@ public class CatRepositoryImpl implements CatRepository {
         this.cat2 = objectMapper.readValue(getClass().getResourceAsStream("/cat2.json"), Cat.class);
     }
 
-    @Override
     public Mono<Cat> getCatById(Long id) {
         return Mono.fromCallable(() -> getCat(id));
     }
 
-    @Override
     public Cat getCatByIdNonReactive(Long id) {
         return getCat(id);
     }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class CareCenterRepositoryImpl implements CareCenterRepository {
+public class CareCenterRepositoryImpl {
 
     private final CareCenter[] careCenters;
 
@@ -21,20 +21,17 @@ public class CareCenterRepositoryImpl implements CareCenterRepository {
 
     }
 
-    @Override
     public Mono<CareCenter> getCareCenterById(Long id) {
         return Mono.fromCallable(
             () -> Arrays.stream(careCenters).filter(careCenter -> careCenter.getId().equals(id)).findFirst()
                 .orElse(null));
     }
 
-    @Override
     public Mono<List<CareCenter>> getCareCentersByIds(List<Long> careCenteIds) {
         return Mono.fromCallable(
             () -> getCareCenters(careCenteIds));
     }
 
-    @Override
     public List<CareCenter> getCareCentersByIdsNonReactive(List<Long> careCenters) {
         return getCareCenters(careCenters);
     }

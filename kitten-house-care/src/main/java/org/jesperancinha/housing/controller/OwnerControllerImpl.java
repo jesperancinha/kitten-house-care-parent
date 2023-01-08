@@ -1,6 +1,6 @@
 package org.jesperancinha.housing.controller;
 
-import org.jesperancinha.housing.service.OwnerService;
+import org.jesperancinha.housing.service.OwnerServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +9,11 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/owners")
-public class OwnerControllerImpl implements OwnerController{
+public class OwnerControllerImpl {
 
-    private final OwnerService ownerService;
+    private final OwnerServiceImpl ownerService;
 
-    public OwnerControllerImpl(OwnerService ownerService) {
+    public OwnerControllerImpl(OwnerServiceImpl ownerService) {
         this.ownerService = ownerService;
     }
 

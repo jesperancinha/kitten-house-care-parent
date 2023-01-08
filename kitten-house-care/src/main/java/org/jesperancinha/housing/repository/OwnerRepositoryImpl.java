@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class OwnerRepositoryImpl implements OwnerRepository {
+public class OwnerRepositoryImpl {
 
     private final Owner[] owners;
 
@@ -20,18 +20,15 @@ public class OwnerRepositoryImpl implements OwnerRepository {
         this.owners = objectMapper.readValue(getClass().getResourceAsStream("/owners.json"), Owner[].class);
     }
 
-    @Override
     public Mono<Owner> getOwnerById(Long id) {
         return Mono.fromCallable(
             () -> Arrays.stream(owners).filter(owner -> owner.getId().equals(id)).findFirst().orElse(null));
     }
 
-    @Override
     public Mono<List<Owner>> getOwnersByIds(List<Long> formerOwners) {
         return Mono.fromCallable(() -> getOwners(formerOwners));
     }
 
-    @Override
     public Mono<String> checkLiability(String address) {
         return Flux
             .fromStream(() -> Arrays.stream(owners).filter(owner -> owner.getAddress().equalsIgnoreCase(address)))
@@ -45,7 +42,6 @@ public class OwnerRepositoryImpl implements OwnerRepository {
                 "OK");
     }
 
-    @Override
     public List<Owner> getOwnersByIdsNonReactive(List<Long> formerOwners) {
         return getOwners(formerOwners);
     }
