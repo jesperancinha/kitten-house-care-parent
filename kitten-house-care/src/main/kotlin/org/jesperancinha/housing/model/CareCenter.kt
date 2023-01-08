@@ -1,14 +1,11 @@
 package org.jesperancinha.housing.model
 
-import lombok.Data
-
-@Data
-class CareCenter {
-    private val id: Long? = null
-    private val name: String? = null
-    private val address: String? = null
-    private val refNumber: String? = null
-    private val city: String? = null
-    private val postCode: String? = null
-    private val country: String? = null
-}
+data class CareCenter(
+    val id: Long? = null,
+    val name: String? = null,
+    val address: String? = null,
+    val refNumber: String? = null,
+    val city: String? = null,
+    val postCode: String? = null,
+    val country: String? = null
+)
