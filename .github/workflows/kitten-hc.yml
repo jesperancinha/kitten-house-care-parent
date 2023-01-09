@@ -15,7 +15,10 @@ jobs:
             java-version: '17'
             distribution: 'adopt'
 
-        - name: Build and Test MAVEN
+        - name: Build and Test MAVEN for Reactive
+          run:  mvn clean install
+
+        - name: Build and Test MAVEN for Reports
           run:  mvn clean -Preports install jacoco:prepare-agent package jacoco:report
 
         - name: Coverage Reports
