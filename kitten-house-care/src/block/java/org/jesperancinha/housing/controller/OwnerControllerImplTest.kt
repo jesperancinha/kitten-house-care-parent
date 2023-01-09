@@ -15,28 +15,27 @@ import java.time.Duration
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
-internal class OwnerControllerImplTest {
+internal class OwnerControllerImplTest @Autowired constructor(
+    val ownerController: OwnerControllerImpl
+) {
     val restTemplate = RestTemplate()
-
-    @Autowired
-    private val ownerController: OwnerControllerImpl? = null
 
     @LocalServerPort
     private val port = 0
     @Test
     fun checkLiability_whenCallPositive_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-            .doOnNext { it: Long? -> ownerController!!.checkLiability("De Veluwe") }
+            .doOnNext { ownerController.checkLiability("De Veluwe") }
             .block()
     }
 
     @Test
     fun checkLiability_whenCallNegative_nonBlocking() {
         Mono.delay(Duration.ofMillis(1))
-            .doOnNext { it: Long? -> ownerController!!.checkLiability("The swamp") }
+            .doOnNext { ownerController.checkLiability("The swamp") }
             .block()
     }
-y
+
     @Test
     fun checkLiabilityI_whenCallJoao_OK() {
         val uri = String.format("http://localhost:%d/owners/De Veluwe", port)

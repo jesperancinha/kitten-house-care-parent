@@ -1,5 +1,6 @@
 package org.jesperancinha.housing.dao
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
@@ -27,9 +28,13 @@ data class Cat(
 )
 
 data class Owner (
+    @JsonProperty("id")
      val id: Long? = null,
+    @JsonProperty("name")
      val name: String? = null,
+    @JsonProperty("address")
      val address: String? = null,
+    @JsonProperty("rating")
      val rating: Int
 )
 
