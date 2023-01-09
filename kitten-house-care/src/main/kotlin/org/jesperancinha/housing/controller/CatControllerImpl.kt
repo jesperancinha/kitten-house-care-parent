@@ -1,6 +1,6 @@
 package org.jesperancinha.housing.controller
 
-import org.jesperancinha.housing.data.CatDto
+import org.jesperancinha.housing.dto.CatDto
 import org.jesperancinha.housing.service.CatServiceImpl
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,7 +17,7 @@ class CatControllerImpl(private val catService: CatServiceImpl) {
         get() = catService.allCats
 
     @GetMapping("/{catId}")
-    fun getCatByIdI(@PathVariable catId: Long): Mono<CatDto?>? {
+    fun getCatByIdI(@PathVariable catId: Long): Mono<CatDto> {
         return catService.getCatById(catId)
     }
 
