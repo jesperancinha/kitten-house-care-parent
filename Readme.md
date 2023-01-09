@@ -14,6 +14,11 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/b7c544d2f59644249ba624b8bd6cdd74)](https://www.codacy.com/gh/jesperancinha/kitten-house-care-parent/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/kitten-house-care-parent&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/kitten-house-care-parent/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/kitten-house-care-parent?branch=main)
 [![codecov](https://codecov.io/github/jesperancinha/kitten-house-care-parent/branch/main/graph/badge.svg?token=NMKeAhTQOt)](https://codecov.io/github/jesperancinha/kitten-house-care-parent)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kitten-house-care-parent.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kitten-house-care-parent.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kitten-house-care-parent.svg)](#)
+
 ---
 
 ## Technologies used
