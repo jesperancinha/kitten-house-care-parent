@@ -8,6 +8,7 @@
 
 [![CircleCI](https://circleci.com/bb/jesperancinha/kitten-house-care-parent.svg?style=svg)](https://circleci.com/bb/jesperancinha/kitten-house-care-parent)
 [![Build status](https://ci.appveyor.com/api/projects/status/jnsit0favwu0j0w0?svg=true)](https://ci.appveyor.com/project/jesperancinha/kitten-house-care-parent)
+[![KHC Build on PR](https://github.com/jesperancinha/kitten-house-care-parent/actions/workflows/kitten-hc-pull-request.yml/badge.svg)](https://github.com/jesperancinha/kitten-house-care-parent/actions/workflows/kitten-hc-pull-request.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b7c544d2f59644249ba624b8bd6cdd74)](https://www.codacy.com/gh/jesperancinha/kitten-house-care-parent/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/kitten-house-care-parent&amp;utm_campaign=Badge_Grade)
 
