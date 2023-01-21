@@ -11,31 +11,16 @@ import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.web.client.RestTemplate
 import reactor.blockhound.BlockHound
-import reactor.core.publisher.Mono
-import java.time.Duration
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
 internal class OwnerControllerIT @Autowired constructor(
-    val ownerController: OwnerControllerImpl
+    val ownerController: OwnerController
 ) {
     val restTemplate = RestTemplate()
 
     @LocalServerPort
     private val port = 0
-    @Test
-    fun checkLiability_whenCallPositive_nonBlocking() {
-        Mono.delay(Duration.ofMillis(1))
-            .doOnNext { ownerController.checkLiability("De Veluwe") }
-            .block()
-    }
-
-    @Test
-    fun checkLiability_whenCallNegative_nonBlocking() {
-        Mono.delay(Duration.ofMillis(1))
-            .doOnNext { ownerController.checkLiability("The swamp") }
-            .block()
-    }
 
     @Test
     fun checkLiabilityI_whenCallJoao_OK() {

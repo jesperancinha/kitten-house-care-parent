@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/owners")
-class OwnerControllerImpl(private val ownerService: OwnerService) {
+class OwnerController(private val ownerService: OwnerService) {
     @GetMapping("{address}")
     fun checkLiability(@PathVariable(name = "address") address: String): Mono<String> =
         ownerService.checkLiability(address)
