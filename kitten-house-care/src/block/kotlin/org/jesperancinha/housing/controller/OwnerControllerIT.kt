@@ -2,7 +2,6 @@ package org.jesperancinha.housing.controller
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +16,7 @@ import java.time.Duration
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
-internal class OwnerControllerImplTest @Autowired constructor(
+internal class OwnerControllerIT @Autowired constructor(
     val ownerController: OwnerControllerImpl
 ) {
     val restTemplate = RestTemplate()

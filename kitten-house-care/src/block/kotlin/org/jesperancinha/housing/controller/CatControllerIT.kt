@@ -6,7 +6,6 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe 
 import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.housing.dto.CareCenterDto
 import org.jesperancinha.housing.dto.CatDto
 import org.jesperancinha.housing.dto.OwnerDto
@@ -25,7 +24,7 @@ import java.util.*
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
-internal class CatControllerImplTest {
+internal class CatControllerIT {
     val restTemplate by lazy {  RestTemplate()}
 
     @Autowired
