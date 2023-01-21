@@ -61,24 +61,20 @@ class CareCenterRepository(objectMapper: ObjectMapper) {
         return getCareCenters(careCenters)
     }
 
-    private fun getCareCenters(careCenteIds: List<Long>): List<CareCenter> = careCenters
-        .filter { careCenter -> careCenteIds.contains(careCenter.id) }
+    private fun getCareCenters(careCenterIds: List<Long>): List<CareCenter> = careCenters
+        .filter { careCenter -> careCenterIds.contains(careCenter.id) }
 }
 
 @Repository
 class CatRepository(objectMapper: ObjectMapper) {
-    private val cat1: Cat by lazy {
-        objectMapper.readValue(
+    private val cat1: Cat = objectMapper.readValue(
             javaClass.getResourceAsStream("/cat1.json"),
             Cat::class.java
         )
-    }
-    private val cat2: Cat by lazy {
-        objectMapper.readValue(
+    private val cat2: Cat = objectMapper.readValue(
             javaClass.getResourceAsStream("/cat2.json"),
             Cat::class.java
         )
-    }
 
     fun getCatById(id: Long): Mono<Cat> = Mono.fromCallable { getCat(id) }
 
@@ -93,12 +89,11 @@ class CatRepository(objectMapper: ObjectMapper) {
 
 @Repository
 class OwnerRepository(objectMapper: ObjectMapper) {
-    private val owners: Array<Owner> by lazy {
-        objectMapper.readValue(
+    private val owners: Array<Owner> = objectMapper.readValue(
             javaClass.getResourceAsStream("/owners.json"),
             Array<Owner>::class.java
         )
-    }
+
 
     fun getOwnerById(id: Long): Mono<Owner> = Mono.fromCallable {
         owners.first { owner -> owner.id == id }
