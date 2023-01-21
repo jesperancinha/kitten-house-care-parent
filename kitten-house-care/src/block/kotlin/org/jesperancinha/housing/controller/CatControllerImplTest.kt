@@ -1,5 +1,10 @@
 package org.jesperancinha.housing.controller
 
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldNotBeEmpty
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe 
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.housing.dto.CareCenterDto
@@ -77,47 +82,47 @@ internal class CatControllerImplTest {
     fun catByIdI_whenCall_Ok(){
             val uri = String.format("http://localhost:%d/cats/1", port)
             val catDto = restTemplate.getForObject(uri, CatDto::class.java)
-            assertThat(catDto).isNotNull
-            assertThat(catDto.name).isEqualTo("Lania")
-            assertThat(catDto.color).isEqualTo("orange")
-            assertThat(catDto.species).isEqualTo("Katachtigen")
-            assertThat(catDto.age).isEqualTo(4L)
-            assertThat(catDto.formerOwners).isEmpty()
-            assertThat(catDto.careCenters).isEmpty()
+            catDto.shouldNotBeNull()
+            catDto.name shouldBe "Lania"
+            catDto.color shouldBe "orange"
+            catDto.species shouldBe "Katachtigen"
+            catDto.age shouldBe 4L
+            catDto.formerOwners.shouldBeEmpty()
+            catDto.careCenters.shouldBeEmpty()
         }
 
     @Test
     fun fullCatById_whenCall_FullOk(){
             val uri = String.format("http://localhost:%d/cats/full/1", port)
             val catDto = restTemplate.getForObject(uri, CatDto::class.java)
-            assertThat(catDto).isNotNull
-            assertThat(catDto.name).isEqualTo("Lania")
-            assertThat(catDto.color).isEqualTo("orange")
-            assertThat(catDto.species).isEqualTo("Katachtigen")
-            assertThat(catDto.age).isEqualTo(4L)
+            catDto.shouldNotBeNull()
+            catDto.name shouldBe "Lania"
+            catDto.color shouldBe "orange"
+            catDto.species shouldBe "Katachtigen"
+            catDto.age shouldBe 4L
             val formerOwners: List<OwnerDto> = catDto.formerOwners
-            assertThat(formerOwners).isNotEmpty
-            assertThat(formerOwners).hasSize(1)
+            formerOwners.shouldNotBeEmpty()
+            formerOwners.shouldHaveSize(1)
             val ownerDto = formerOwners[0]
-            assertThat(ownerDto.name).isEqualTo("Eng. João Esperancinha")
-            assertThat(ownerDto.address).isEqualTo("De Veluwe")
+            ownerDto.name shouldBe "Eng. João Esperancinha"
+            ownerDto.address shouldBe "De Veluwe"
             val careCenters: List<CareCenterDto> = catDto.careCenters
-            assertThat(careCenters).hasSize(1)
+            careCenters.shouldHaveSize(1)
             val careCenterDto = careCenters[0]
-            assertThat(careCenterDto).isNotNull
-            assertThat(careCenterDto.name).isEqualTo("Nieuwegein Kitten Center")
-            assertThat(careCenterDto.address).isEqualTo("Kittenstraat")
-            assertThat(careCenterDto.refNumber).isEqualTo("23ABC")
-            assertThat(careCenterDto.city).isEqualTo("Nieuwegein")
-            assertThat(careCenterDto.postCode).isEqualTo("9999CC")
-            assertThat(careCenterDto.country).isEqualTo("Nederland")
+            careCenterDto.shouldNotBeNull()
+            careCenterDto.name shouldBe "Nieuwegein Kitten Center"
+            careCenterDto.address shouldBe "Kittenstraat"
+            careCenterDto.refNumber shouldBe "23ABC"
+            careCenterDto.city shouldBe "Nieuwegein"
+            careCenterDto.postCode shouldBe "9999CC"
+            careCenterDto.country shouldBe "Nederland"
         }
 
     @Test
     fun all_whenCall_Ok(){
             val uri = String.format("http://localhost:%d/cats", port)
             val catDtos = restTemplate.getForObject(uri, Array<CatDto>::class.java)
-            assertThat(catDtos).isNotNull
+            catDtos.shouldNotBeNull()
             val catDto1 = Arrays.stream(catDtos)
                 .filter { catDto ->
                     (catDto.name
@@ -125,66 +130,60 @@ internal class CatControllerImplTest {
                 }
                 .findFirst()
                 .orElse(null)
-            assertThat(catDto1).isNotNull
-            assertThat(catDto1.name).isEqualTo("Lania")
-            assertThat(catDto1.color).isEqualTo("orange")
-            assertThat(catDto1.species).isEqualTo("Katachtigen")
-            assertThat(catDto1.age).isEqualTo(4L)
+            catDto1.shouldNotBeNull()
+            catDto1.name shouldBe "Lania"
+            catDto1.color shouldBe "orange"
+            catDto1.species shouldBe "Katachtigen"
+            catDto1.age shouldBe 4L
             val formerOwners: List<OwnerDto> = catDto1.formerOwners
-            assertThat(formerOwners).isEmpty()
+            formerOwners.shouldBeEmpty()
             val careCenters: List<CareCenterDto> = catDto1.careCenters
-            assertThat(careCenters).isEmpty()
+            careCenters.shouldBeEmpty()
             val catDto2 = Arrays.stream(catDtos)
-                .filter { catDto ->
-                    (catDto.name
-                            == "Mit")
-                }
+                .filter { catDto -> (catDto.name == "Mit") }
                 .findFirst()
                 .orElse(null)
-            assertThat(catDto2).isNotNull
-            assertThat(catDto2.name).isEqualTo("Mit")
-            assertThat(catDto2.color).isEqualTo("black and white")
-            assertThat(catDto2.species).isEqualTo("Katachtigen")
-            assertThat(catDto2.age).isEqualTo(9L)
+            catDto2.shouldNotBeNull()
+            catDto2.name shouldBe "Mit"
+            catDto2.color shouldBe "black and white"
+            catDto2.species shouldBe "Katachtigen"
+            catDto2.age shouldBe 9L
             val formerOwners2: List<OwnerDto> = catDto2.formerOwners
-            assertThat(formerOwners2).isEmpty()
+            formerOwners2.shouldBeEmpty()
             val careCenters2: List<CareCenterDto> = catDto2.careCenters
-            assertThat(careCenters2).isEmpty()
+            careCenters2.shouldBeEmpty()
         }
 
     @Test
     fun fullAll_whenCall_FullOk(){
             val uri = String.format("http://localhost:%d/cats/full", port)
             val catDtos = restTemplate.getForObject(uri, Array<CatDto>::class.java)
-            assertThat(catDtos).isNotNull
+            catDtos.shouldNotBeNull()
             val catDto1 = Arrays.stream(catDtos)
-                .filter { catDto ->
-                    (catDto.name
-                            == "Lania")
-                }
+                .filter { catDto -> (catDto.name == "Lania") }
                 .findFirst()
                 .orElse(null)
-            assertThat(catDto1).isNotNull
-            assertThat(catDto1.name).isEqualTo("Lania")
-            assertThat(catDto1.color).isEqualTo("orange")
-            assertThat(catDto1.species).isEqualTo("Katachtigen")
-            assertThat(catDto1.age).isEqualTo(4L)
+            catDto1.shouldNotBeNull()
+            catDto1.name shouldBe "Lania"
+            catDto1.color shouldBe "orange"
+            catDto1.species shouldBe "Katachtigen"
+            catDto1.age shouldBe 4L
             val formerOwners: List<OwnerDto> = catDto1.formerOwners
-            assertThat(formerOwners).isNotEmpty
-            assertThat(formerOwners).hasSize(1)
+            formerOwners.shouldNotBeEmpty()
+            formerOwners.shouldHaveSize(1)
             val ownerDto = formerOwners[0]
-            assertThat(ownerDto.name).isEqualTo("Eng. João Esperancinha")
-            assertThat(ownerDto.address).isEqualTo("De Veluwe")
+            ownerDto.name shouldBe "Eng. João Esperancinha"
+            ownerDto.address shouldBe "De Veluwe"
             val careCenters: List<CareCenterDto> = catDto1.careCenters
-            assertThat(careCenters).hasSize(1)
+            careCenters.shouldHaveSize(1)
             val careCenterDto = careCenters[0]
-            assertThat(careCenterDto).isNotNull
-            assertThat(careCenterDto.name).isEqualTo("Nieuwegein Kitten Center")
-            assertThat(careCenterDto.address).isEqualTo("Kittenstraat")
-            assertThat(careCenterDto.refNumber).isEqualTo("23ABC")
-            assertThat(careCenterDto.city).isEqualTo("Nieuwegein")
-            assertThat(careCenterDto.postCode).isEqualTo("9999CC")
-            assertThat(careCenterDto.country).isEqualTo("Nederland")
+            careCenterDto.shouldNotBeNull()
+            careCenterDto.name shouldBe "Nieuwegein Kitten Center"
+            careCenterDto.address shouldBe "Kittenstraat"
+            careCenterDto.refNumber shouldBe "23ABC"
+            careCenterDto.city shouldBe "Nieuwegein"
+            careCenterDto.postCode shouldBe "9999CC"
+            careCenterDto.country shouldBe "Nederland"
             val catDto2 = Arrays.stream(catDtos)
                 .filter { catDto ->
                     (catDto.name
@@ -192,27 +191,27 @@ internal class CatControllerImplTest {
                 }
                 .findFirst()
                 .orElse(null)
-            assertThat(catDto2).isNotNull
-            assertThat(catDto2.name).isEqualTo("Mit")
-            assertThat(catDto2.color).isEqualTo("black and white")
-            assertThat(catDto2.species).isEqualTo("Katachtigen")
-            assertThat(catDto2.age).isEqualTo(9L)
+            catDto2.shouldNotBeNull()
+            catDto2.name shouldBe "Mit"
+            catDto2.color shouldBe "black and white"
+            catDto2.species shouldBe "Katachtigen"
+            catDto2.age shouldBe 9L
             val formerOwners2: List<OwnerDto> = catDto2.formerOwners
-            assertThat(formerOwners2).isNotEmpty
-            assertThat(formerOwners2).hasSize(1)
+            formerOwners2.shouldNotBeEmpty()
+            formerOwners2.shouldHaveSize(1)
             val ownerDto2 = formerOwners2[0]
-            assertThat(ownerDto2.name).isEqualTo("Eng. Stromnelwan Zieligofski")
-            assertThat(ownerDto2.address).isEqualTo("The swamp")
+            ownerDto2.name shouldBe "Stromnelwan Zieligofski"
+            ownerDto2.address shouldBe "The swamp"
             val careCenters2: List<CareCenterDto> = catDto2.careCenters
-            assertThat(careCenters2).hasSize(1)
+            careCenters2.shouldHaveSize(1)
             val careCenterDto2 = careCenters2[0]
-            assertThat(careCenterDto2).isNotNull
-            assertThat(careCenterDto2.name).isEqualTo("Nieuwegein Kitten Center")
-            assertThat(careCenterDto2.address).isEqualTo("Kittenstraat")
-            assertThat(careCenterDto2.refNumber).isEqualTo("23ABC")
-            assertThat(careCenterDto2.city).isEqualTo("Nieuwegein")
-            assertThat(careCenterDto2.postCode).isEqualTo("9999CC")
-            assertThat(careCenterDto2.country).isEqualTo("Nederland")
+            careCenterDto2.shouldNotBeNull()
+            careCenterDto2.name shouldBe "Nieuwegein Kitten Center"
+            careCenterDto2.address shouldBe "Kittenstraat"
+            careCenterDto2.refNumber shouldBe "23ABC"
+            careCenterDto2.city shouldBe "Nieuwegein"
+            careCenterDto2.postCode shouldBe "9999CC"
+            careCenterDto2.country shouldBe "Nederland"
         }
 
     companion object {

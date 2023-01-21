@@ -89,7 +89,7 @@
                                 </goals>
                                 <configuration>
                                     <sources>
-                                        <source>src/block/java</source>
+                                        <source>src/block/kotlin</source>
                                     </sources>
                                 </configuration>
                             </execution>
@@ -104,6 +104,9 @@
                             <argLine>-XX:+AllowRedefinitionToAddDeleteMethods</argLine>
                             <forkCount>1</forkCount>
                             <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>**/*Test</include>
+                            </includes>
                         </configuration>
                         <executions>
                             <execution>
@@ -149,6 +152,25 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <id>block-hound-test</id>
+                                <phase>generate-test-sources</phase>
+                                <goals>
+                                    <goal>add-test-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>src/test/kotlin</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -156,7 +178,6 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
