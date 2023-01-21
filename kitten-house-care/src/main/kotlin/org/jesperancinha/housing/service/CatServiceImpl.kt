@@ -21,7 +21,7 @@ class CatServiceImpl(
         return catRepository.getCatById(id).map { cat -> cat.toDto() }
     }
 
-    fun getFullCatById(id: Long): Mono<CatDto?> {
+    fun getFullCatById(id: Long): Mono<CatDto> {
         return catRepository.getCatById(id).map { cat ->
             val catDto = cat.toDto()
             Mono.zip(
@@ -43,12 +43,9 @@ class CatServiceImpl(
         }.flatMap { source -> Mono.from(source) }.subscribeOn(Schedulers.parallel())
     }
 
-    val fullAllCats: Flux<CatDto?>
-        get() = Flux.merge(getFullCatById(1L), getFullCatById(2L))
-    val allCats: Flux<CatDto?>
-        get() = Flux.merge(getCatById(1L), getCatById(2L))
-    val fullAllCatsNonReactive: List<CatDto>
-        get() = listOfNotNull(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
+    fun fullAllCats(): Flux<CatDto> = Flux.merge(getFullCatById(1L), getFullCatById(2L))
+    fun allCats(): Flux<CatDto> = Flux.merge(getCatById(1L), getCatById(2L))
+    fun fullAllCatsNonReactive(): List<CatDto> = listOfNotNull(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
             .map { catsNonReactive ->
                 val catDto = catsNonReactive.toDto()
                 catDto.careCenters.addAll(

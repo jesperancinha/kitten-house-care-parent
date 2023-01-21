@@ -21,67 +21,60 @@ import java.util.*
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
 internal class CatControllerImplTest {
-    val restTemplate = RestTemplate()
+    val restTemplate by lazy {  RestTemplate()}
 
     @Autowired
-    private val catController: CatControllerImpl? = null
+    lateinit var catController: CatControllerImpl
 
     @LocalServerPort
-    private val port = 0
+    protected var port: Int = 0
 
-    @get:Test
-    val catByIdI_whenCall_nonBlocking: Unit
-        get() {
-            Mono.delay(Duration.ofMillis(1))
-                .doOnNext { it: Long? -> catController!!.getCatByIdI(1L) }
+    @Test
+    fun catByIdI_whenCall_nonBlocking(){
+        Mono.delay(Duration.ofMillis(1))
+                .doOnNext { catController.getCatByIdI(1L) }
                 .block()
         }
 
-    @get:Test
-    val fullCatById_whenCall_nonBlocking: Unit
-        get() {
+    @Test
+    fun fullCatById_whenCall_nonBlocking(){
             Mono.delay(Duration.ofMillis(1))
-                .doOnNext { it: Long? -> catController!!.getFullCatById(1L) }
+                .doOnNext {catController.getFullCatById(1L) }
                 .block()
         }
 
-    @get:Test
-    val allCats_whenCall_nonBlocking: Unit
-        get() {
+    @Test
+    fun allCats_whenCall_nonBlocking(){
             Mono.delay(Duration.ofMillis(1))
-                .doOnNext { it: Long? -> catController!!.allCats }
+                .doOnNext {catController.allCats() }
                 .block()
         }
 
-    @get:Test
-    val fullAllCats_whenCall_nonBlocking: Unit
-        get() {
+    @Test
+    fun fullAllCats_whenCall_nonBlocking(){
             Mono.delay(Duration.ofMillis(1))
-                .doOnNext { it: Long? -> catController!!.fullAllCats }
+                .doOnNext {catController.fullAllCats() }
                 .block()
         }
 
-    @get:Test
-    val fullAllCatsNonReaciveForTest_whenCall_Blocking: Unit
-        get() {
+    @Test
+    fun fullAllCatsNonReaciveForTest_whenCall_Blocking(){
             Mono.delay(Duration.ofMillis(1))
-                .doOnNext { it: Long? -> catController!!.fullAllCatsReactiveForTest }
+                .doOnNext {catController.fullAllCatsReactiveForTest() }
                 .block()
         }
 
-    @get:Test
-    val fullAllCatsNonReacive_whenCall_Blocking: Unit
-        get() {
+    @Test
+    fun fullAllCatsNonReacive_whenCall_Blocking(){
             Assertions.assertThatExceptionOfType(Exception::class.java).isThrownBy {
                 Mono.delay(Duration.ofMillis(1))
-                    .doOnNext { it: Long? -> catController!!.fullAllCatsNonReactive }
+                    .doOnNext {catController.fullAllCatsNonReactive() }
                     .block()
             }
         }
 
-    @get:Test
-    val catByIdI_whenCall_Ok: Unit
-        get() {
+    @Test
+    fun catByIdI_whenCall_Ok(){
             val uri = String.format("http://localhost:%d/cats/1", port)
             val catDto = restTemplate.getForObject(uri, CatDto::class.java)
             assertThat(catDto).isNotNull
@@ -93,9 +86,8 @@ internal class CatControllerImplTest {
             assertThat(catDto.careCenters).isEmpty()
         }
 
-    @get:Test
-    val fullCatById_whenCall_FullOk: Unit
-        get() {
+    @Test
+    fun fullCatById_whenCall_FullOk(){
             val uri = String.format("http://localhost:%d/cats/full/1", port)
             val catDto = restTemplate.getForObject(uri, CatDto::class.java)
             assertThat(catDto).isNotNull
@@ -121,21 +113,20 @@ internal class CatControllerImplTest {
             assertThat(careCenterDto.country).isEqualTo("Nederland")
         }
 
-    @get:Test
-    val all_whenCall_Ok: Unit
-        get() {
+    @Test
+    fun all_whenCall_Ok(){
             val uri = String.format("http://localhost:%d/cats", port)
             val catDtos = restTemplate.getForObject(uri, Array<CatDto>::class.java)
             assertThat(catDtos).isNotNull
             val catDto1 = Arrays.stream(catDtos)
-                .filter { catDto: CatDto? ->
-                    (catDto!!.name
+                .filter { catDto ->
+                    (catDto.name
                             == "Lania")
                 }
                 .findFirst()
                 .orElse(null)
             assertThat(catDto1).isNotNull
-            assertThat(catDto1!!.name).isEqualTo("Lania")
+            assertThat(catDto1.name).isEqualTo("Lania")
             assertThat(catDto1.color).isEqualTo("orange")
             assertThat(catDto1.species).isEqualTo("Katachtigen")
             assertThat(catDto1.age).isEqualTo(4L)
@@ -144,14 +135,14 @@ internal class CatControllerImplTest {
             val careCenters: List<CareCenterDto> = catDto1.careCenters
             assertThat(careCenters).isEmpty()
             val catDto2 = Arrays.stream(catDtos)
-                .filter { catDto: CatDto? ->
-                    (catDto!!.name
+                .filter { catDto ->
+                    (catDto.name
                             == "Mit")
                 }
                 .findFirst()
                 .orElse(null)
             assertThat(catDto2).isNotNull
-            assertThat(catDto2!!.name).isEqualTo("Mit")
+            assertThat(catDto2.name).isEqualTo("Mit")
             assertThat(catDto2.color).isEqualTo("black and white")
             assertThat(catDto2.species).isEqualTo("Katachtigen")
             assertThat(catDto2.age).isEqualTo(9L)
@@ -161,21 +152,20 @@ internal class CatControllerImplTest {
             assertThat(careCenters2).isEmpty()
         }
 
-    @get:Test
-    val fullAll_whenCall_FullOk: Unit
-        get() {
+    @Test
+    fun fullAll_whenCall_FullOk(){
             val uri = String.format("http://localhost:%d/cats/full", port)
             val catDtos = restTemplate.getForObject(uri, Array<CatDto>::class.java)
             assertThat(catDtos).isNotNull
             val catDto1 = Arrays.stream(catDtos)
-                .filter { catDto: CatDto? ->
-                    (catDto!!.name
+                .filter { catDto ->
+                    (catDto.name
                             == "Lania")
                 }
                 .findFirst()
                 .orElse(null)
             assertThat(catDto1).isNotNull
-            assertThat(catDto1!!.name).isEqualTo("Lania")
+            assertThat(catDto1.name).isEqualTo("Lania")
             assertThat(catDto1.color).isEqualTo("orange")
             assertThat(catDto1.species).isEqualTo("Katachtigen")
             assertThat(catDto1.age).isEqualTo(4L)
@@ -196,14 +186,14 @@ internal class CatControllerImplTest {
             assertThat(careCenterDto.postCode).isEqualTo("9999CC")
             assertThat(careCenterDto.country).isEqualTo("Nederland")
             val catDto2 = Arrays.stream(catDtos)
-                .filter { catDto: CatDto? ->
-                    (catDto!!.name
+                .filter { catDto ->
+                    (catDto.name
                             == "Mit")
                 }
                 .findFirst()
                 .orElse(null)
             assertThat(catDto2).isNotNull
-            assertThat(catDto2!!.name).isEqualTo("Mit")
+            assertThat(catDto2.name).isEqualTo("Mit")
             assertThat(catDto2.color).isEqualTo("black and white")
             assertThat(catDto2.species).isEqualTo("Katachtigen")
             assertThat(catDto2.age).isEqualTo(9L)
