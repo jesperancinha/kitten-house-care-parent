@@ -105,7 +105,7 @@
                             <forkCount>1</forkCount>
                             <reuseForks>true</reuseForks>
                             <includes>
-                                <include>**/*Test</include>
+                                <include>src/block/kotlin/**/*Test</include>
                             </includes>
                         </configuration>
                         <executions>
