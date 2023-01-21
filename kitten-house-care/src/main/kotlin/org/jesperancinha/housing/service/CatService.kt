@@ -13,7 +13,7 @@ import java.util.function.Consumer
 import java.util.stream.Collectors
 
 @Service
-class CatServiceImpl(
+class CatService(
     private val catRepository: CatRepository, private val ownerRepository: OwnerRepository,
     private val careCenterRepository: CareCenterRepository
 ) {

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 internal class CareCenterConverterTest {
     @Test
-    fun `conversion to Dto should be exact`() {
+    fun `conversion of care center to Dto should be exact`() {
         val careCenterDto = CareCenter(
             id= 123,
             name = "Lucy and Lars",

@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
 @Service
-class OwnerServiceImpl(private val ownerRepository: OwnerRepository) {
-    fun checkLiability(name: String): Mono<String> {
-        return ownerRepository.checkLiability(name)
-    }
+class OwnerService(private val ownerRepository: OwnerRepository) {
+    fun checkLiability(name: String) = ownerRepository.checkLiability(name)
+
 }

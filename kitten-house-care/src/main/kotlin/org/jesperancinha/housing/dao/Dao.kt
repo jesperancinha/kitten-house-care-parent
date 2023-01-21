@@ -13,7 +13,7 @@ data class CareCenter(
     val refNumber: String? = null,
     val city: String? = null,
     val postCode: String? = null,
-    val country: String? = null
+    val country: String? = null,
 )
 
 data class Cat(
@@ -24,18 +24,18 @@ data class Cat(
     val pattern: String? = null,
     val age: Long? = null,
     val formerOwners: List<Long> = ArrayList(),
-    val careCenters: List<Long> = ArrayList()
+    val careCenters: List<Long> = ArrayList(),
 )
 
-data class Owner (
+data class Owner(
     @JsonProperty("id")
-     val id: Long? = null,
+    val id: Long? = null,
     @JsonProperty("name")
-     val name: String? = null,
+    val name: String? = null,
     @JsonProperty("address")
-     val address: String? = null,
+    val address: String? = null,
     @JsonProperty("rating")
-     val rating: Int
+    val rating: Int,
 )
 
 @Repository
@@ -67,38 +67,37 @@ class CareCenterRepository(objectMapper: ObjectMapper) {
 
 @Repository
 class CatRepository(objectMapper: ObjectMapper) {
-    private val cat1: Cat
-    private val cat2: Cat
-
-    init {
-        cat1 = objectMapper.readValue(javaClass.getResourceAsStream("/cat1.json"), Cat::class.java)
-        cat2 = objectMapper.readValue(javaClass.getResourceAsStream("/cat2.json"), Cat::class.java)
+    private val cat1: Cat by lazy {
+        objectMapper.readValue(
+            javaClass.getResourceAsStream("/cat1.json"),
+            Cat::class.java
+        )
+    }
+    private val cat2: Cat by lazy {
+        objectMapper.readValue(
+            javaClass.getResourceAsStream("/cat2.json"),
+            Cat::class.java
+        )
     }
 
-    fun getCatById(id: Long): Mono<Cat> {
-        return Mono.fromCallable { getCat(id) }
-    }
+    fun getCatById(id: Long): Mono<Cat> = Mono.fromCallable { getCat(id) }
 
-    fun getCatByIdNonReactive(id: Long): Cat? {
-        return getCat(id)
-    }
+    fun getCatByIdNonReactive(id: Long) = getCat(id)
 
-    private fun getCat(id: Long): Cat? {
-        if (id == 1L) {
-            return cat1
-        }
-        return if (id== 2L) {
-            cat2
-        } else null
+    private fun getCat(id: Long): Cat? = when (id) {
+        1L -> cat1
+        2L -> cat2
+        else -> null
     }
 }
 
 @Repository
 class OwnerRepository(objectMapper: ObjectMapper) {
-    private val owners: Array<Owner>
-
-    init {
-        owners = objectMapper.readValue(javaClass.getResourceAsStream("/owners.json"), Array<Owner>::class.java)
+    private val owners: Array<Owner> by lazy {
+        objectMapper.readValue(
+            javaClass.getResourceAsStream("/owners.json"),
+            Array<Owner>::class.java
+        )
     }
 
     fun getOwnerById(id: Long): Mono<Owner> = Mono.fromCallable {
@@ -112,8 +111,7 @@ class OwnerRepository(objectMapper: ObjectMapper) {
     fun checkLiability(address: String): Mono<String> {
         return Flux.fromStream {
             owners.filter { owner -> owner.address.equals(address, ignoreCase = true) }.stream()
-        }
-            .reduce { owner: Owner, owner2: Owner ->
+        }.reduce { owner: Owner, owner2: Owner ->
                 if (owner.rating > owner2.rating) {
                     return@reduce owner2
                 }

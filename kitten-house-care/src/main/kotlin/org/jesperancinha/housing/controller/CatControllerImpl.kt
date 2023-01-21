@@ -1,7 +1,7 @@
 package org.jesperancinha.housing.controller
 
 import org.jesperancinha.housing.dto.CatDto
-import org.jesperancinha.housing.service.CatServiceImpl
+import org.jesperancinha.housing.service.CatService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,7 +12,7 @@ import reactor.core.scheduler.Schedulers
 
 @RestController
 @RequestMapping("/cats")
-class CatControllerImpl(private val catService: CatServiceImpl) {
+class CatControllerImpl(private val catService: CatService) {
     @GetMapping
     fun allCats(): Flux<CatDto> = catService.allCats()
 
