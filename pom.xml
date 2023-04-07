@@ -15,7 +15,7 @@
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blockhound.version>1.0.7.RELEASE</blockhound.version>
+        <blockhound.version>1.0.8.RELEASE</blockhound.version>
         <spring-boot-maven-plugin.version>3.0.5</spring-boot-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <spring-boot-starter-parent.version>3.0.5</spring-boot-starter-parent.version>
