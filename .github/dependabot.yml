@@ -10,3 +10,11 @@ updates:
     directory: "/kitten-house-care-web"
     schedule:
       interval: "daily"
+    groups:
+      angular:
+        patterns:
+          - "@angular*"
+          - "angular*"
+          - "*angular*"
+          - "@types*"
+          - "*types*"
