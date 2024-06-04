@@ -28,3 +28,15 @@ prune-all: stop
 	docker system prune --all
 	docker builder prune
 	docker system prune --all --volumes
+remove-lock-files:
+	find . -name "package-lock.json" | xargs -I {} rm {}; \
+	find . -name "yarn.lock" | xargs -I {} rm {};
+update: remove-lock-files
+	git pull
+	npm install caniuse-lite
+	npm install -g npm-check-updates
+	cd stamps-and-coins-web; \
+ 		yarn; \
+ 		npx browserslist --update-db; \
+ 		ncu -u; \
+ 		yarn
