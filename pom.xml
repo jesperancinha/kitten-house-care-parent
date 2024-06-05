@@ -5,6 +5,7 @@
     <version>0.0.0-SNAPSHOT</version>
     <modules>
         <module>kitten-house-care</module>
+        <module>kitten-house-care-coroutines</module>
     </modules>
     <properties>
         <java.version>21</java.version>
