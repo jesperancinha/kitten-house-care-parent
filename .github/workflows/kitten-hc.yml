@@ -19,7 +19,7 @@ jobs:
             distribution: 'adopt'
 
         - name: Build and Test MAVEN for Reactive
-          run:  make
+          run:  make no-test
 
         - name: Build and Test MAVEN for Reports
           run:  make coverage
