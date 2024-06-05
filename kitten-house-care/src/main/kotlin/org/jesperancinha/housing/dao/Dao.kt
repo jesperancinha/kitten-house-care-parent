@@ -40,10 +40,8 @@ data class Owner(
 
 @Repository
 class CareCenterRepository(objectMapper: ObjectMapper) {
-    private val careCenters: Array<CareCenter>
-
-    init {
-        careCenters = objectMapper
+    val  careCenters: Array<CareCenter> by lazy {
+        objectMapper
             .readValue(javaClass.getResourceAsStream("/carecenters.json"), Array<CareCenter>::class.java)
     }
 
