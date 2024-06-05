@@ -19,10 +19,10 @@ jobs:
             distribution: 'adopt'
 
         - name: Build and Test MAVEN for Reactive
-          run:  mvn clean install
+          run:  make
 
         - name: Build and Test MAVEN for Reports
-          run:  mvn clean -Preports install jacoco:prepare-agent package jacoco:report
+          run:  make coverage
 
         - name: Coverage Reports
           run: mvn omni-coveragereporter:report

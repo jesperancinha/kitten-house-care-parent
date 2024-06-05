@@ -40,3 +40,5 @@ update: remove-lock-files
  		npx browserslist --update-db; \
  		ncu -u; \
  		yarn
+coverage:
+	mvn clean -Preports install jacoco:prepare-agent package jacoco:report
