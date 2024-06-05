@@ -1,11 +1,8 @@
 b: build
 build: build-maven
 build-maven:
-	mvn clean install -DskipTests
-test:
-	mvn test
-	cd kitten-house-care-web && yarn install && npm run test
-	cd kitten-house-care-mock && yarn install
+	mvn clean install
+test: test-maven
 test-maven:
 	mvn test
 local: no-test
