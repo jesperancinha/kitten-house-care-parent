@@ -40,10 +40,8 @@ data class Owner(
 
 @Repository
 class CareCenterRepository(objectMapper: ObjectMapper) {
-    val  careCenters: Array<CareCenter> by lazy {
-        objectMapper
-            .readValue(javaClass.getResourceAsStream("/carecenters.json"), Array<CareCenter>::class.java)
-    }
+    var careCenters: Array<CareCenter> = objectMapper
+        .readValue(javaClass.getResourceAsStream("/carecenters.json"), Array<CareCenter>::class.java)
 
     fun getCareCenterById(id: Long): Mono<CareCenter> {
         return Mono.fromCallable {
