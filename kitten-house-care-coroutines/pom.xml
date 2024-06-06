@@ -29,6 +29,9 @@
 	</dependencies>
 
 	<build>
+		<finalName>${artifactId}</finalName>
+		<sourceDirectory>src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>src/main/kotlin</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

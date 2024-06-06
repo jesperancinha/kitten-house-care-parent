@@ -1,10 +1,10 @@
-package org.jesperancinha.housing.service
+package org.jesperancinha.kittens.service
 
-import org.jesperancinha.housing.dao.CareCenter
-import org.jesperancinha.housing.dao.CareCenterRepository
-import org.jesperancinha.housing.dao.CatRepository
-import org.jesperancinha.housing.dao.OwnerRepository
-import org.jesperancinha.housing.dto.CatDto
+import org.jesperancinha.kittens.dao.CareCenter
+import org.jesperancinha.kittens.dao.CareCenterRepository
+import org.jesperancinha.kittens.dao.CatRepository
+import org.jesperancinha.kittens.dao.OwnerRepository
+import org.jesperancinha.kittens.dto.CatDto
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono

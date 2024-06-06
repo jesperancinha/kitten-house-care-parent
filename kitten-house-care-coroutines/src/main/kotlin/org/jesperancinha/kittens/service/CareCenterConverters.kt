@@ -1,11 +1,11 @@
-package org.jesperancinha.housing.service
+package org.jesperancinha.kittens.service
 
-import org.jesperancinha.housing.dao.CareCenter
-import org.jesperancinha.housing.dao.Cat
-import org.jesperancinha.housing.dao.Owner
-import org.jesperancinha.housing.dto.CareCenterDto
-import org.jesperancinha.housing.dto.CatDto
-import org.jesperancinha.housing.dto.OwnerDto
+import org.jesperancinha.kittens.dao.CareCenter
+import org.jesperancinha.kittens.dao.Cat
+import org.jesperancinha.kittens.dao.Owner
+import org.jesperancinha.kittens.dto.CareCenterDto
+import org.jesperancinha.kittens.dto.CatDto
+import org.jesperancinha.kittens.dto.OwnerDto
 
 fun CareCenter.toDto() = CareCenterDto(
     name = name,

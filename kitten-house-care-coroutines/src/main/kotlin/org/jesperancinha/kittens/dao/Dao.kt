@@ -1,4 +1,4 @@
-package org.jesperancinha.housing.dao
+package org.jesperancinha.kittens.dao
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper

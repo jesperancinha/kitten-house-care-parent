@@ -1,6 +1,6 @@
-package org.jesperancinha.housing.controller
+package org.jesperancinha.kittens.controller
 
-import org.jesperancinha.housing.service.OwnerService
+import org.jesperancinha.kittens.service.OwnerService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping

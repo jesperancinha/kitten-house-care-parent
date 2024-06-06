@@ -1,4 +1,4 @@
-package org.jesperancinha.housing.dto
+package org.jesperancinha.kittens.dto
 
 class CareCenterDto (
     val name: String? = null,
