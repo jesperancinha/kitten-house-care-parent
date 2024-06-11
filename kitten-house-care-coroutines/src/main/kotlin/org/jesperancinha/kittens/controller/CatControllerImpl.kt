@@ -15,7 +15,7 @@ import java.util.concurrent.Flow
 @RequestMapping("/cats")
 class CatControllerImpl(private val catService: CatService) {
     @GetMapping
-    fun allCats(): List<CatDto> = catService.allCats()
+    fun allCats(): kotlinx.coroutines.flow.Flow<CatDto> = catService.allCats()
 
     @GetMapping("/{catId}")
     suspend fun getCatByIdI(@PathVariable catId: Long)= catService.getCatById(catId)
@@ -24,13 +24,13 @@ class CatControllerImpl(private val catService: CatService) {
    suspend fun getFullCatById(@PathVariable catId: Long)= catService.getFullCatById(catId)
 
     @GetMapping("/full")
-    fun fullAllCats(): List<CatDto> = catService.fullAllCats()
+    fun fullAllCats(): kotlinx.coroutines.flow.Flow<CatDto> = catService.fullAllCats()
 
     @GetMapping("/fullForTest")
-    fun fullAllCatsReactiveForTest(): List<CatDto> = catService.fullAllCats()
+    fun fullAllCatsReactiveForTest(): kotlinx.coroutines.flow.Flow<CatDto> = catService.fullAllCats()
 
     @GetMapping("/full/nonreactive")
-    fun fullAllCatsNonReactive(): List<CatDto> = run {
+    fun fullAllCatsNonReactive(): kotlinx.coroutines.flow.Flow<CatDto> = run {
         Thread.sleep(1)
         catService.fullAllCatsNonReactive()
     }

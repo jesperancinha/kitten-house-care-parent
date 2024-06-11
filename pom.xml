@@ -26,6 +26,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <argLine>-Xmx2048m</argLine>
         <kotlin.version>2.0.0</kotlin.version>
+        <kotlinx-coroutines.version>1.8.1</kotlinx-coroutines.version>
     </properties>
 
     <dependencyManagement>
@@ -48,6 +49,13 @@
                 <artifactId>blockhound</artifactId>
                 <version>${blockhound.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
+                <type>pom</type>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

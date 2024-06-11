@@ -1,5 +1,6 @@
 package org.jesperancinha.kittens.service
 
+import kotlinx.coroutines.flow.*
 import org.jesperancinha.kittens.dao.CareCenter
 import org.jesperancinha.kittens.dao.CareCenterRepository
 import org.jesperancinha.kittens.dao.CatRepository
@@ -31,11 +32,11 @@ class CatService(
         }
     }
 
-    fun fullAllCats(): List<CatDto> = listOf(requireNotNull(getFullCatById(1L)), requireNotNull(getFullCatById(2L)))
-    fun allCats(): List<CatDto> = listOf(requireNotNull(getCatById(1L)), requireNotNull(getCatById(2L)))
-    fun fullAllCatsNonReactive(): List<CatDto> =
-        listOfNotNull(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
-            .map { catsNonReactive ->
+    fun fullAllCats(): Flow<CatDto> = flowOf(requireNotNull(getFullCatById(1L)), requireNotNull(getFullCatById(2L)))
+    fun allCats(): Flow<CatDto> = flowOf(requireNotNull(getCatById(1L)), requireNotNull(getCatById(2L)))
+    fun fullAllCatsNonReactive(): Flow<CatDto> =
+        flowOf(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
+            .filterNotNull().mapNotNull { catsNonReactive ->
                 val catDto = catsNonReactive.toDto()
                 catDto.careCenters.addAll(
                     careCenterRepository
