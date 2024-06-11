@@ -17,33 +17,24 @@ class CatService(
     private val catRepository: CatRepository, private val ownerRepository: OwnerRepository,
     private val careCenterRepository: CareCenterRepository
 ) {
-    fun getCatById(id: Long) = catRepository.getCatById(id).map { cat -> cat.toDto() }
+    fun getCatById(id: Long) = catRepository.getCatById(id)?.toDto()
 
-    fun getFullCatById(id: Long): Mono<CatDto> {
-        return catRepository.getCatById(id).map { cat ->
-            val catDto = cat.toDto()
-            Mono.zip(
-                ownerRepository.getOwnersByIds(cat.formerOwners)
-                    .map { owners ->
-                        owners.forEach(Consumer { owner -> catDto.formerOwners.add(owner.toDto()) })
-                        owners
-                    }
-                    .subscribeOn(Schedulers.parallel()), careCenterRepository.getCareCentersByIds(cat.careCenters)
-                    .map { careCenters: List<CareCenter> ->
-                        careCenters
-                            .forEach(Consumer { careCenter ->
-                                catDto.careCenters.add(careCenter.toDto())
-                            })
-                        careCenters
-                    }
-                    .subscribeOn(Schedulers.parallel())) { _, _ -> catDto }
-                .subscribeOn(Schedulers.parallel())
-        }.flatMap { source -> Mono.from(source) }.subscribeOn(Schedulers.parallel())
+    fun getFullCatById(id: Long): CatDto? {
+        return catRepository.getCatById(id)?.let { cat ->
+            cat.toDto().let { catDto ->
+                catDto.formerOwners.addAll(ownerRepository.getOwnersByIds(cat.formerOwners)
+                    .map { it.toDto() })
+            }
+            careCenterRepository.getCareCentersByIds(cat.careCenters)
+                .map { it.toDto() }
+            cat.toDto()
+        }
     }
 
-    fun fullAllCats(): Flux<CatDto> = Flux.merge(getFullCatById(1L), getFullCatById(2L))
-    fun allCats(): Flux<CatDto> = Flux.merge(getCatById(1L), getCatById(2L))
-    fun fullAllCatsNonReactive(): List<CatDto> = listOfNotNull(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
+    fun fullAllCats(): List<CatDto> = listOf(requireNotNull(getFullCatById(1L)), requireNotNull(getFullCatById(2L)))
+    fun allCats(): List<CatDto> = listOf(requireNotNull(getCatById(1L)), requireNotNull(getCatById(2L)))
+    fun fullAllCatsNonReactive(): List<CatDto> =
+        listOfNotNull(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
             .map { catsNonReactive ->
                 val catDto = catsNonReactive.toDto()
                 catDto.careCenters.addAll(

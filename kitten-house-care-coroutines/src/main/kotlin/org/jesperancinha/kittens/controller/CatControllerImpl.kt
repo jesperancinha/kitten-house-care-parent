@@ -9,27 +9,25 @@ import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.core.scheduler.Schedulers
+import java.util.concurrent.Flow
 
 @RestController
 @RequestMapping("/cats")
 class CatControllerImpl(private val catService: CatService) {
     @GetMapping
-    fun allCats(): Flux<CatDto> = catService.allCats()
+    fun allCats(): List<CatDto> = catService.allCats()
 
     @GetMapping("/{catId}")
     suspend fun getCatByIdI(@PathVariable catId: Long)= catService.getCatById(catId)
 
     @GetMapping("/full/{catId}")
-    fun getFullCatById(@PathVariable catId: Long): Mono<CatDto> = catService.getFullCatById(catId)
+   suspend fun getFullCatById(@PathVariable catId: Long)= catService.getFullCatById(catId)
 
     @GetMapping("/full")
-    fun fullAllCats(): Flux<CatDto> = catService.fullAllCats()
+    fun fullAllCats(): List<CatDto> = catService.fullAllCats()
 
     @GetMapping("/fullForTest")
-    fun fullAllCatsReactiveForTest(): Flux<CatDto> = catService.fullAllCats().publishOn(Schedulers.boundedElastic())
-        .map { catDto -> Thread.sleep(1)
-        catDto
-    }
+    fun fullAllCatsReactiveForTest(): List<CatDto> = catService.fullAllCats()
 
     @GetMapping("/full/nonreactive")
     fun fullAllCatsNonReactive(): List<CatDto> = run {

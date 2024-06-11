@@ -49,8 +49,8 @@ class CareCenterRepository(objectMapper: ObjectMapper) {
         }
     }
 
-    fun getCareCentersByIds(careCenterIds: List<Long>): Mono<List<CareCenter>> {
-        return Mono.fromCallable { getCareCenters(careCenterIds) }
+    fun getCareCentersByIds(careCenterIds: List<Long>): List<CareCenter> {
+        return getCareCenters(careCenterIds)
     }
 
     fun getCareCentersByIdsNonReactive(careCenters: List<Long>): List<CareCenter> {
@@ -59,20 +59,21 @@ class CareCenterRepository(objectMapper: ObjectMapper) {
 
     private fun getCareCenters(careCenterIds: List<Long>): List<CareCenter> = careCenters
         .filter { careCenter -> careCenterIds.contains(careCenter.id) }
+
 }
 
 @Repository
 class CatRepository(objectMapper: ObjectMapper) {
     private val cat1: Cat = objectMapper.readValue(
-            javaClass.getResourceAsStream("/cat1.json"),
-            Cat::class.java
-        )
+        javaClass.getResourceAsStream("/cat1.json"),
+        Cat::class.java
+    )
     private val cat2: Cat = objectMapper.readValue(
-            javaClass.getResourceAsStream("/cat2.json"),
-            Cat::class.java
-        )
+        javaClass.getResourceAsStream("/cat2.json"),
+        Cat::class.java
+    )
 
-    fun getCatById(id: Long): Mono<Cat> = Mono.fromCallable { getCat(id) }
+    fun getCatById(id: Long): Cat? = getCat(id)
 
     fun getCatByIdNonReactive(id: Long) = getCat(id)
 
@@ -86,28 +87,28 @@ class CatRepository(objectMapper: ObjectMapper) {
 @Repository
 class OwnerRepository(objectMapper: ObjectMapper) {
     private val owners: Array<Owner> = objectMapper.readValue(
-            javaClass.getResourceAsStream("/owners.json"),
-            Array<Owner>::class.java
-        )
+        javaClass.getResourceAsStream("/owners.json"),
+        Array<Owner>::class.java
+    )
 
 
     fun getOwnerById(id: Long): Mono<Owner> = Mono.fromCallable {
         owners.first { owner -> owner.id == id }
     }
 
-    fun getOwnersByIds(formerOwners: List<Long>): Mono<List<Owner>> {
-        return Mono.fromCallable { getOwners(formerOwners) }
+    fun getOwnersByIds(formerOwners: List<Long>): List<Owner> {
+        return getOwners(formerOwners)
     }
 
     fun checkLiability(address: String): Mono<String> {
         return Flux.fromStream {
             owners.filter { owner -> owner.address.equals(address, ignoreCase = true) }.stream()
         }.reduce { owner: Owner, owner2: Owner ->
-                if (owner.rating > owner2.rating) {
-                    return@reduce owner2
-                }
-                owner
-            }.map { owner -> if (owner.rating <= 0) "NOK" else "OK" }
+            if (owner.rating > owner2.rating) {
+                return@reduce owner2
+            }
+            owner
+        }.map { owner -> if (owner.rating <= 0) "NOK" else "OK" }
     }
 
     fun getOwnersByIdsNonReactive(formerOwners: List<Long>): List<Owner> {
