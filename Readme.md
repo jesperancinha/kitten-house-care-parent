@@ -85,6 +85,7 @@ mvn clean -Preports jacoco:prepare-agent install jacoco:report
 
 ## References
 
+-   [Select in coroutines](https://kt.academy/article/cc-select)
 -   [How To Use Server-Sent Events in Node.js to Build a Realtime App](https://www.digitalocean.com/community/tutorials/nodejs-server-sent-events-build-realtime-app)
 -   [Angular and Server Sent Events (SSE)](https://bartoszgajda.com/2019/12/22/angular-and-server-sent-events-sse/)
 -   [Server-Sent Events Using Spring](https://dzone.com/articles/server-sent-events-using-spring)
