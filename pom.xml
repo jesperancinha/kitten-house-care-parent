@@ -26,7 +26,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <argLine>-Xmx2048m</argLine>
         <kotlin.version>2.0.20</kotlin.version>
-        <kotlinx-coroutines.version>1.8.1</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.9.0</kotlinx-coroutines.version>
     </properties>
 
     <dependencyManagement>
