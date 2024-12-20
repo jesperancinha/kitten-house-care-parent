@@ -19,7 +19,7 @@
         <blockhound.version>1.0.10.RELEASE</blockhound.version>
         <spring-boot-maven-plugin.version>3.4.1</spring-boot-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <spring-boot-starter-parent.version>3.4.0</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.4.1</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
