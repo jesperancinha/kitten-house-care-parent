@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Eng. João Esperancinha",
+    "address": "De Veluwe",
+    "rating": 10
+  },
+  {
+    "id": 2,
+    "name": "Stromnelwan Zieligofski",
+    "address": "The swamp",
+    "rating": 0
+  }
+]

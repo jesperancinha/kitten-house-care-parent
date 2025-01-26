@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "name": "Lania",
+  "color": "orange",
+  "species": "Katachtigen",
+  "pattern": "stripped",
+  "age": 4,
+  "formerOwners": [
+    1
+  ],
+  "careCenters": [
+    1
+  ]
+}
