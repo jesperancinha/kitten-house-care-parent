@@ -17,7 +17,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blockhound.version>1.0.10.RELEASE</blockhound.version>
-        <spring-boot-maven-plugin.version>3.4.1</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.4.2</spring-boot-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <spring-boot-starter-parent.version>3.4.2</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
