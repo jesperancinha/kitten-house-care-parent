@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: maven:3.9.7-eclipse-temurin-21-alpine
+      - image: eclipse-temurin:21-alpine
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,6 +23,8 @@ jobs:
     steps:
       - checkout
 
+      - run: apk add maven
+      - run: apk add make
       - run: mvn clean install
 
       - save_cache:
