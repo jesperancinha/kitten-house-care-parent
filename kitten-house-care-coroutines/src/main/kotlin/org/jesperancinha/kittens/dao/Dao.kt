@@ -64,7 +64,7 @@ class CareCenterRepository(objectMapper: ObjectMapper) {
 
 @Repository
 class CatRepository(objectMapper: ObjectMapper) {
-    private val cat1: Cat = objectMapper.readValue(
+    private val cat1: Cat = objectMapper.readValue<Cat>(
         javaClass.getResourceAsStream("/cat1.json"),
         Cat::class.java
     )

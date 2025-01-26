@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "name": "Mit",
+  "color": "black and white",
+  "species": "Katachtigen",
+  "pattern": "spotted",
+  "age": 9,
+  "formerOwners": [
+    2
+  ],
+  "careCenters": [
+    1
+  ]
+}
