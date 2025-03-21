@@ -25,7 +25,7 @@
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <argLine>-Xmx2048m</argLine>
-        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.version>2.1.20</kotlin.version>
         <kotlinx-coroutines.version>1.10.1</kotlinx-coroutines.version>
     </properties>
 
