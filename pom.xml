@@ -21,7 +21,7 @@
         <spring-boot-starter-parent.version>3.4.4</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <argLine>-Xmx2048m</argLine>
         <kotlin.version>2.1.20</kotlin.version>
