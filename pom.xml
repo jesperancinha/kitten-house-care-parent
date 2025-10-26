@@ -16,15 +16,15 @@
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blockhound.version>1.0.15.RELEASE</blockhound.version>
-        <spring-boot-maven-plugin.version>3.5.6</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.5.7</spring-boot-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <spring-boot-starter-parent.version>3.5.6</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.5.7</spring-boot-starter-parent.version>
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <argLine>-Xmx2048m</argLine>
-        <kotlin.version>2.2.20</kotlin.version>
+        <kotlin.version>2.2.21</kotlin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
     </properties>
 
