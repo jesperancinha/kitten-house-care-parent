@@ -83,6 +83,19 @@ mvn clean install
 mvn clean -Preports jacoco:prepare-agent install jacoco:report 
 ```
 
+---
+
+## Claude
+
+Prompt claude with the following:
+
+### Run all skills
+```text
+please run skills angular, annotations, docker, java, jee, jvm, kotlin, parallel, readme, spring, spring-test on this project
+```
+
+---
+
 ## References
 
 -   [Select in coroutines](https://kt.academy/article/cc-select)
