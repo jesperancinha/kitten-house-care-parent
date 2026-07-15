@@ -31,7 +31,7 @@ class CatService(
     fun allCats(): Flow<CatDto> = flowOf(requireNotNull(getCatById(1L)), requireNotNull(getCatById(2L)))
     fun fullAllCatsNonReactive(): Flow<CatDto> =
         flowOf(catRepository.getCatByIdNonReactive(1L), catRepository.getCatByIdNonReactive(2L))
-            .filterNotNull().mapNotNull { catsNonReactive ->
+            .filterNotNull().map { catsNonReactive ->
                 val catDto = catsNonReactive.toDto()
                 catDto.careCenters.addAll(
                     careCenterRepository

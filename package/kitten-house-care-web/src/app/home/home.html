@@ -1,0 +1,9 @@
+<p>home works!</p>
+
+@if (availability.isLoading()) {
+  <p class="sse-status">Connecting to the availability stream…</p>
+} @else if (availability.error()) {
+  <p class="sse-status sse-status--error">Availability stream error.</p>
+} @else if (availability.hasValue()) {
+  <p class="sse-status">Latest availability update: {{ availability.value().data }}</p>
+}
