@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 internal class CatServiceTest @Autowired constructor(
-    val catService: CatService,
+    private val catService: CatService,
 ) {
 
     @Test

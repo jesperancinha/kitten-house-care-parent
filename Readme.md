@@ -16,9 +16,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/kitten-house-care-parent/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/kitten-house-care-parent?branch=main)
 [![codecov](https://codecov.io/github/jesperancinha/kitten-house-care-parent/branch/main/graph/badge.svg?token=NMKeAhTQOt)](https://codecov.io/github/jesperancinha/kitten-house-care-parent)
 
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kitten-house-care-parent.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kitten-house-care-parent.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kitten-house-care-parent.svg)](#)
+![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kitten-house-care-parent.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kitten-house-care-parent.svg)
+![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kitten-house-care-parent.svg)
 
 ---
 
@@ -82,6 +82,19 @@ mvn clean install
 ```shell
 mvn clean -Preports jacoco:prepare-agent install jacoco:report 
 ```
+
+---
+
+## Claude
+
+Prompt claude with the following:
+
+### Run all skills
+```text
+please run skills angular, annotations, docker, java, jee, jvm, kotlin, parallel, readme, spring, spring-test on this project
+```
+
+---
 
 ## References
 
