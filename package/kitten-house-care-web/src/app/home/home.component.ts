@@ -1,11 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ChangeDetectionStrategy} from "@angular/core";
 import {SseService} from "../sse.service";
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class HomeComponent implements OnInit {
 

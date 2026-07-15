@@ -24,14 +24,13 @@ import java.util.*
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
-internal class CatControllerIT {
-    val restTemplate by lazy {  RestTemplate()}
+internal class CatControllerIT @Autowired constructor(
+    private val catController: CatControllerImpl
+) {
+    val restTemplate by lazy { RestTemplate() }
 
-    @Autowired
-    lateinit var catController: CatControllerImpl
-
-    @LocalServerPort
-    protected var port: Int = 0
+    @field:LocalServerPort
+    private val port: Int = 0
 
     @Test
     fun catByIdI_whenCall_nonBlocking(){

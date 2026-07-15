@@ -1,16 +1,11 @@
 package org.jesperancinha.kittens.service
 
 import kotlinx.coroutines.flow.*
-import org.jesperancinha.kittens.dao.CareCenter
 import org.jesperancinha.kittens.dao.CareCenterRepository
 import org.jesperancinha.kittens.dao.CatRepository
 import org.jesperancinha.kittens.dao.OwnerRepository
 import org.jesperancinha.kittens.dto.CatDto
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
-import reactor.core.scheduler.Schedulers
-import java.util.function.Consumer
 import java.util.stream.Collectors
 
 @Service

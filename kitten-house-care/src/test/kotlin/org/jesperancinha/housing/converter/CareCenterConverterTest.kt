@@ -2,7 +2,6 @@ package org.jesperancinha.housing.converter
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.assertj.core.api.Assertions
 import org.jesperancinha.housing.dao.CareCenter
 import org.jesperancinha.housing.service.toDto
 import org.junit.jupiter.api.Test

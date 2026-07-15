@@ -15,11 +15,11 @@ import reactor.blockhound.BlockHound
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension::class)
 internal class OwnerControllerIT @Autowired constructor(
-    val ownerController: OwnerController
+    private val ownerController: OwnerController
 ) {
     val restTemplate = RestTemplate()
 
-    @LocalServerPort
+    @field:LocalServerPort
     private val port = 0
 
     @Test

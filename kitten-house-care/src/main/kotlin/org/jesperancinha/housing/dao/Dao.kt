@@ -28,19 +28,19 @@ data class Cat(
 )
 
 data class Owner(
-    @JsonProperty("id")
+    @param:JsonProperty("id")
     val id: Long? = null,
-    @JsonProperty("name")
+    @param:JsonProperty("name")
     val name: String? = null,
-    @JsonProperty("address")
+    @param:JsonProperty("address")
     val address: String? = null,
-    @JsonProperty("rating")
+    @param:JsonProperty("rating")
     val rating: Int,
 )
 
 @Repository
 class CareCenterRepository(objectMapper: ObjectMapper) {
-    var careCenters: Array<CareCenter> = objectMapper
+    val careCenters: Array<CareCenter> = objectMapper
         .readValue(javaClass.getResourceAsStream("/carecenters.json"), Array<CareCenter>::class.java)
 
     fun getCareCenterById(id: Long): Mono<CareCenter> {
