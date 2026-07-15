@@ -9,7 +9,7 @@ import java.time.Duration
 
 @SpringBootTest
 class CatControllerImplTest @Autowired constructor(
-    val ownerController: OwnerController
+    private val ownerController: OwnerController
 ) {
 
     @Test

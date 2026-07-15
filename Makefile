@@ -10,12 +10,12 @@ local: no-test
 no-test:
 	mvn clean install -DskipTests
 docker-clean:
-	docker-compose rm -svf
+	docker compose rm -svf
 docker:
 	rm -rf out
-	docker-compose up -d --build --remove-orphans
+	docker compose up -d --build --remove-orphans
 stop:
-	docker-compose down --remove-orphans
+	docker compose down --remove-orphans
 prune-all: stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker rm
@@ -45,5 +45,3 @@ accept-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
 update-repo-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/update-all-repo-prs.sh | bash
-dc-migration:
-	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash
